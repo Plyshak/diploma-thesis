@@ -1,0 +1,30 @@
+{varType string[] $plugins}
+{varType ?string $addPluginFactory}
+
+{block content}
+    <div class="add-plugin-list" n:snippet>
+        {include plugins}
+    </div>
+{/block}
+
+{define plugins}
+    <div class="list">
+        {foreach $plugins as $prefix => $name}
+            {include plugin, prefix => $prefix, name => $name}
+        {/foreach}
+    </div>
+    <div class="factory" n:if="$addPluginFactory">
+        {control factory}
+    </div>
+{/define}
+
+{define plugin}
+    <div class="add-plugin-item item">
+        <a
+            n:href="addPlugin!, $prefix"
+            class="button"
+        >
+            {$name}
+        </a>
+    </div>
+{/define}

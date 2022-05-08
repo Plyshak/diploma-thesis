@@ -1,0 +1,7 @@
+services:
+    router.service.homepage: Infrastructure\Router\HomepageRouter
+    router.service.course: Infrastructure\Router\CourseRouter
+    router.service.library: Infrastructure\Router\LibraryRouter
+    router.service.discussion: Infrastructure\Router\DiscussionRouter
+    router.factory: Infrastructure\Router\RouterFactory
+    router: @router.factory::createRouter()

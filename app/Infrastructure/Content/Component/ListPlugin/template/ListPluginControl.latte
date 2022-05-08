@@ -1,0 +1,74 @@
+{varType bool $live}
+{varType Domain\Content\Entity\Plugin\PluginBlockEntityInterface[] $plugins}
+
+{block content}
+    <div class="content-builder-plugin-list list" n:snippet="pluginList">
+        {control addPlugin-0}
+
+        {if $live}
+            {include twoCols}
+        {else}
+            {include oneCol}
+        {/if}
+
+        {include liveView}
+    </div>
+{/block}
+
+{define twoCols}
+    <div class="left-column">
+        {include pluginList}
+    </div>
+    <div class="right-column">
+        {include pluginLiveList}
+    </div>
+{/define}
+
+{define oneCol}
+    {include pluginList}
+{/define}
+
+{define pluginList}
+    <div class="plugin-list">
+        {foreach $plugins as $i => $plugin}
+            <div class="single-plugin">
+                {var $count = $iterator->getCounter()}
+
+                <div class="plugin">
+                    <div class="delete">
+                        <a
+                                n:href="delete!, $i"
+                                class="button"
+                        >
+                            Smazat blok
+                        </a>
+                    </div>
+                    <div class="plugin-edit-form">
+                        {control plugin-$i}
+                    </div>
+                </div>
+            </div>
+            {control addPlugin-$count}
+        {/foreach}
+    </div>
+{/define}
+
+{define pluginLiveList}
+    <div class="plugin-live-list">
+        {foreach $plugins as $key => $plugin}
+            {control livePlugin-$key}
+        {/foreach}
+    </div>
+{/define}
+
+{define liveView}
+    <div class="plugin-life-view">
+        <a n:href="liveView!, !$live" class="popup-button">
+            {if $live}
+                Vypnout režim živého náhledu
+            {else}
+                Zapnout režim živého náhledu
+            {/if}
+        </a>
+    </div>
+{/define}

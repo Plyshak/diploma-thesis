@@ -1,0 +1,12 @@
+footer {
+    color: var(--light-gray);
+}
+
+footer p {
+    text-align: center;
+    font-size: small;
+}
+
+footer p span {
+    font-style: italic;
+}

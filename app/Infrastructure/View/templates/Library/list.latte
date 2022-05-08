@@ -1,0 +1,24 @@
+{varType int $libraryArticleCount}
+{varType string $libraryArticleCountText}
+
+{block content}
+    <div class="library">
+        <div class="intro">
+            <h1 class="title">
+                Články v knihovně
+                <span class="article-count"> - {$libraryArticleCount} {$libraryArticleCountText}</span>
+            </h1>
+
+            <div class="add-article" n:if="$user->isLoggedIn()">
+                <a n:href="addArticle! $user->getId()" data-ajax="false">
+                    <span class="button-link">
+                        Přidat článek
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="library-list" n:snippet="libraryArticleList">
+            {control list}
+        </div>
+    </div>
+{/block}

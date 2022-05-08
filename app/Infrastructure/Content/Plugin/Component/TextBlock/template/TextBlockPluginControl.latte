@@ -1,0 +1,35 @@
+{varType Domain\Content\Entity\Plugin\PluginTextBlockEntity $entity}
+
+{block content}
+    <div class="plugin-text-block plugin-item">
+        {include header}
+        {include body}
+        {include footer}
+    </div>
+{/block}
+
+{define header}
+    <div class="plugin-header">
+        <div class="subtitle" n:if="$entity->isShowTitle()">{$entity->getTitle()}</div>
+        <div class="description" n:if="$entity->getPerex()">{$entity->getPerex()}</div>
+    </div>
+{/define}
+
+{define body}
+    <div class="plugin-body">
+        <div class="body">
+            {$entity->getBody()|noescape}
+        </div>
+    </div>
+{/define}
+
+{define footer}
+    <div class="plugin-footer">
+        <div n:if="$entity->isButtonShow()">
+            <a class="button"
+               href="{$entity->getButtonUrl()}"
+               {if $entity->isButtonBlank()}target="_blank"{/if}
+            >{$entity->getButtonTitle()}</a>
+        </div>
+    </div>
+{/define}

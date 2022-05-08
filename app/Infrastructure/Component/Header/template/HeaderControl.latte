@@ -1,0 +1,44 @@
+{varType string $homepageLink}
+{varType Infrastructure\DataTransferObject\Menu[] $menu}
+
+{block header}
+    <header id="header" class="header">
+        <div class="headerContainer">
+            {include userProfile}
+            {include menu}
+            {include logo}
+        </div>
+    </header>
+{/block}
+
+{define logo}
+    <div class="logo">
+        <a href="{$homepageLink}" >
+            <img class="logo" src="http://localhost/images/logo.png" alt="Czechitas logo" />
+        </a>
+    </div>
+{/define}
+
+{define menu}
+    <div id="menu" class="menu">
+        <div class="menuContainer">
+            {foreach $menu as $menuItem}
+                <div class="menuItem">
+                    <a
+                        href="{$menuItem->getLink()}"
+                        class="menuLink {$menuItem->isActive() ? 'active' : ''}"
+                        data-ajax="false"
+                    >
+                        {$menuItem->getTitle()|upper}
+                    </a>
+                </div>
+            {/foreach}
+        </div>
+    </div>
+{/define}
+
+{define userProfile}
+    <div id="userProfile" class="userProfile">
+        {control login}
+    </div>
+{/define}

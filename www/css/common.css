@@ -1,0 +1,229 @@
+/* Global colors */
+:root{
+    --white: rgb(255, 255, 255);
+    --light-gray: rgb(153, 153, 153);
+    --dark-gray: rgb(51, 51, 51);
+    --primary: rgb(230, 0 ,126);
+    --secondary: rgb(45, 46, 131);
+    --black: rgb(0, 0, 0);
+}
+
+/* Typography elements */
+.login {
+    font-size: 20pt;
+    font-weight: bold;
+    font-style: normal;
+    color: var(--secondary);
+}
+
+.menuLink {
+    font-size: 20pt;
+    font-weight: bold;
+    font-style: normal;
+    color: var(--secondary);
+}
+
+.headline {
+    font-size: 52pt;
+    font-weight: bold;
+    font-style: normal;
+    color: var(--secondary);
+}
+
+.title {
+    font-size: 30pt;
+    font-weight: bold;
+    font-style: normal;
+    color: var(--secondary);
+}
+
+h1.title {
+    color: var(--primary);
+}
+
+div.title {
+    font-size: 18pt;
+}
+
+.title span {
+    font-size: 30pt;
+    color: var(--light-gray);
+}
+
+div.title span {
+    font-size: 18pt;
+}
+
+.subtitle {
+    font-size: 20pt;
+    font-weight: normal;
+    font-style: normal;
+    color: var(--primary);
+}
+
+.subtitle span {
+    color: var(--light-gray);
+}
+
+.quote {
+    font-size: 20pt;
+    font-weight: normal;
+    font-style: italic;
+    color: var(--light-gray)
+}
+
+/* General element styles */
+ul.no-list,
+ol.no-list {
+    list-style: none;
+    margin-left: -20px;
+}
+
+input.smart-text,
+textarea.smart-text,
+input.smart-search-input {
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 5px;
+    border: 2px solid var(--light-gray);
+}
+
+input.smart-search-input { /* TODO: left side of input */
+    /*background-image: url('../images/search.png');*/
+    /*background-position: 10px 10px;*/
+    /*background-repeat: no-repeat;*/
+}
+
+select.smart-select {
+    text-align: left;
+    width: 75%;
+    margin: 5px 0 0 0;
+    padding: 5px;
+    border: 2px solid var(--light-gray);
+}
+
+textarea.smart-text[name*=perex] {
+    height: 50px;
+}
+
+textarea.smart-text[name*=body],
+textarea.smart-text[name*=description] {
+    height: 100px   ;
+}
+
+form.autoSubmitForm input[type=submit] {
+    display: none;
+}
+
+.button {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 10pt;
+    display: block;
+    border-radius: 5px;
+    border: 2px solid var(--primary);
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 10px;
+}
+
+.button:hover {
+    border: 2px solid var(--secondary);
+    background-color: var(--secondary);
+}
+
+.button[target=_blank] {
+    border: 2px solid var(--secondary);
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.button[target=_blank]:hover {
+    border: 2px solid var(--light-gray);
+    background-color: var(--light-gray);
+}
+
+.popup-button {
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 10pt;
+    display: block;
+    border-radius: 5px;
+    border: 2px solid var(--light-gray);
+    background-color: var(--light-gray);
+    color: var(--white);
+    padding: 10px;
+}
+
+.popup-button:hover {
+    border: 2px solid var(--dark-gray);
+    background-color: var(--dark-gray);
+}
+
+
+img.fullwidth {
+    max-height: 500px;
+    width: 80%;
+}
+
+img.profilePicture {
+    height: 50px;
+    width: 50px;
+}
+
+div.no-permission {
+    margin: 20% 0;
+    width: 100%;
+    text-align: center;
+    color: var(--dark-gray);
+    font-weight: bold;
+}
+
+/* General page styles */
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    font-size: 14pt;
+    font-weight: normal;
+    font-style: normal;
+    color: var(--black);
+}
+
+#page {
+    width: 90%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Forms */
+.editForm table {
+    width: 100%;
+}
+
+.editForm table tr {
+    width: 100%;
+}
+
+.editForm table tr th {
+    width: 25%;
+}
+
+.editForm table tr td {
+    width: 75%;
+}
+
+.editForm table tr th {
+    text-align: right;
+}
+
+.editForm table tr td {
+    text-align: left;
+}

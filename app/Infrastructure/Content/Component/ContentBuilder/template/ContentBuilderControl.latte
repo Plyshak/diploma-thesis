@@ -1,0 +1,60 @@
+{varType bool $hasContentBuilder}
+
+{block contentBuilder}
+    <div class="content-builder" n:snippet="contentBuilder">
+        {include content}
+    </div>
+{/block}
+
+{define content}
+    {include title}
+
+    {if $hasContentBuilder}
+        {include withContentBuilder}
+    {else}
+        {include withoutContentBuilder}
+    {/if}
+{/define}
+
+{define withContentBuilder}
+    <div class="content-builder-header">
+        {include contentHeader}
+    </div>
+    <div class="content-builder-body">
+        {include contentBody}
+    </div>
+{/define}
+
+{define withoutContentBuilder}
+    <div class="no-content-builder">
+        <a
+            n:href="createContentBuilder!"
+            class="content-builder-create button"
+        >
+            Vytvořit dynamický obsah
+        </a>
+    </div>
+{/define}
+
+{define title}
+    <h2 class="title">Dynamický obsah</h2>
+{/define}
+
+{define description}
+    <div class="description">
+        <p>
+            Toto je šablonový systém dynamického obsahu.<br />
+            Nový blok přidáte pomocí tlačítek s názvem bloku.
+            Blok je možné vkládat kamkoliv do stávající struktury.<br />
+            Každý blok je nutné po editaci uložit samostatně.
+        </p>
+    </div>
+{/define}
+
+{define contentHeader}
+    {include description}
+{/define}
+
+{define contentBody}
+    {control pluginList}
+{/define}

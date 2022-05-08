@@ -1,0 +1,15 @@
+services:
+    content.plugin.component.pictureBlock.factory:
+        implement: Infrastructure\Content\Plugin\Component\PictureBlock\PictureBlockPluginControlFactory
+    content.plugin.component.textBlock.factory:
+        implement: Infrastructure\Content\Plugin\Component\TextBlock\TextBlockPluginControlFactory
+    content.component.addPlugin:
+        implement: Infrastructure\Content\Component\AddPlugin\AddPluginControlFactory
+    content.component.content:
+        implement: Infrastructure\Content\Component\Content\ContentControlFactory
+    content.component.contentBuilder:
+        implement: Infrastructure\Content\Component\ContentBuilder\ContentBuilderControlFactory
+    content.component.listPlugin:
+        implement: Infrastructure\Content\Component\ListPlugin\ListPluginControlFactory
+    content.service.pluginFormFactory: Infrastructure\Content\Service\PluginFormFactoryService
+    content.service.pluginService: Infrastructure\Content\Service\PluginService

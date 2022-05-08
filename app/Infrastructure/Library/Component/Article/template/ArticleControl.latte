@@ -1,0 +1,47 @@
+{varType Domain\Library\Entity\LibraryEntity $libraryEntity}
+{varType Domain\Label\Entity\LabelEntity[] $labels}
+{varType Nette\Security\User $user}
+
+{block articleControl}
+    <div class="library-article">
+        <div class="image">
+            <img
+                {if $libraryEntity->getImage()}
+                    src="http://localhost/{$libraryEntity->getImage()}"
+                {else}
+                        src="http://localhost/images/no-image.jpeg"
+                {/if}
+                alt="{$libraryEntity->getTitle()}"
+            />
+        </div>
+        <div class="content">
+            <div class="title">
+                {$libraryEntity->getTitle()}
+                <span class="created">
+                    ({$libraryEntity->getCreatedAt()|date:'d. m. Y'})
+                </span>
+            </div>
+            <div class="edit-link">
+                <a class="button"
+                    href="{plink "Library:edit", $libraryEntity->getId()}"
+                    data-ajax="false"
+                    n:if="$user->isLoggedIn() && $user->getId() === $libraryEntity->getAuthor()->getId()"
+                >EDITOVAT</a>
+            </div>
+            <div class="perex">
+                {$libraryEntity->getPerex()}
+            </div>
+            <div class="labels">
+                {foreach $labels as $label}
+                    <span class="label">{$label->getTitle()}</span>
+                {/foreach}
+            </div>
+            <div class="view-link">
+                <a class="button"
+                    href="{plink "Library:view", $libraryEntity->getId()}"
+                    data-ajax="false"
+                >ČÍST VÍCE</a>
+            </div>
+        </div>
+    </div>
+{/block}

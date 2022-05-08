@@ -1,0 +1,42 @@
+{varType Nette\Security\User $user}
+
+{block content}
+    <div class="userProfileContext">
+        <div class="userProfileMenu" n:snippet="login">
+            {if $user->isLoggedIn()}
+                {include userProfile}
+            {else}
+                {include loginOptions}
+            {/if}
+        </div>
+    </div>
+{/block}
+
+{define loginOptions}
+    <span class="login">
+        Přihlásit se:
+    </span>
+    <ul class="no-list">
+        <li>
+            <a class="loginLink" n:href="login! 'Uživatel'">Uživatel</a>
+        </li>
+        <li>
+            <a class="loginLink" n:href="login! 'Lektor'">Lektor</a>
+        </li>
+        <li>
+            <a class="loginLink" n:href="login! 'Administrátor'">Administrátor</a>
+        </li>
+    </ul>
+{/define}
+
+{define userProfile}
+    <p>
+        {var Domain\User\Entity\UserInterface $identity = $user->getIdentity()}
+        {$identity->getName()}
+    </p>
+    <ul>
+        <li>
+            <a class="logoutLink" n:href="logout!">Odhlásit se</a>
+        </li>
+    </ul>
+{/define}

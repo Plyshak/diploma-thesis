@@ -1,0 +1,37 @@
+{varType Domain\Content\Entity\Plugin\PluginPictureBlockEntity $entity}
+
+{block content}
+    <div class="plugin-text-block plugin-item">
+        {include header}
+        {include body}
+        {include footer}
+    </div>
+{/block}
+
+{define header}
+    <div class="plugin-header">
+        <div class="title" n:if="$entity->isShowTitle()">{$entity->getTitle()}</div>
+    </div>
+{/define}
+
+{define body}
+    <div class="plugin-body">
+        <div class="body align-{$entity->getPictureAlign()}">
+            <div class="picture width-{$entity->getPictureWidth()}">
+                 <img
+                    class="image"
+                    src="http://localhost/{$entity->getImage() ?? 'images/no-image.jpg'}"
+                    alt="{$entity->getPictureDescription()}"
+                 />
+            </div>
+            <div class="picture-description" n:if="$entity->isPictureShowDescription()">
+                {$entity->getPictureDescription()}
+            </div>
+        </div>
+    </div>
+{/define}
+
+{define footer}
+    <div class="plugin-footer">
+    </div>
+{/define}

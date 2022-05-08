@@ -1,0 +1,15 @@
+{varType Domain\Content\Entity\Plugin\PluginBlockEntityInterface[] $plugins}
+
+{block content}
+    <div class="content list">
+        <div class="plugin-list">
+            {foreach $plugins as $i => $plugin}
+                <div class="single-plugin">
+                    <div class="plugin">
+                        {control plugin-$i}
+                    </div>
+                </div>
+            {/foreach}
+        </div>
+    </div>
+{/block}

@@ -1,0 +1,164 @@
+/* Article List - Single Article */
+div.library-article-list-separator {
+    display: block;
+    width: 100%;
+    height: 0;
+    border-bottom: 2px solid var(--light-gray);
+    margin: 10px 0;
+}
+
+div.library-article {
+    position: relative;
+    display: block;
+}
+
+div.library-article::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+div.library-article div.image {
+    float: left;
+    width: 20%;
+}
+
+div.library-article div.image img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+div.library-article div.content {
+    float: left;
+    width: 80%;
+}
+
+div.library-article div.content::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+div.library-article div.content div.title {
+    float: left;
+    width: 75%;
+    min-height: 20%;
+    padding: 10px 0 0 10px;
+}
+
+div.library-article div.content div.edit-link {
+    float: right;
+    width: 20%;
+    min-height: 20%;
+    padding: 0 10px 0 0;
+}
+
+div.library-article div.content div.perex {
+    float: left;
+    width: 100%;
+    min-height: 60%;
+    padding: 15px 10px 20px 10px;
+}
+
+div.library-article div.content div.perex::first-letter {
+    text-transform: capitalize;
+}
+
+div.library-article div.content div.labels {
+    align-self: flex-end;
+    float: left;
+    width: 75%;
+    min-height: 20%;
+    padding: 5px 0 0 10px;
+}
+
+div.library-article div.content div.view-link {
+    float: right;
+    width: 20%;
+    height: 20%;
+    padding: 5px 10px 0 0;
+}
+
+/* Single Article view */
+div.article div.intro {
+    display: block;
+}
+
+div.article div.intro::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+div.article div.intro div.left-column {
+    float: left;
+    width: 80%;
+}
+
+div.article div.intro div.left-column > div {
+    padding: 0 0 0 25px;
+}
+
+div.article div.intro div.left-column div div.labels {
+    display: block;
+    width: 100%;
+}
+
+div.article div.intro div.left-column div div.image {
+    display: block;
+    width: 100%;
+}
+
+div.article div.intro div.right-column {
+    float: right;
+    width: 15%;
+}
+
+div.author {
+    display: block;
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px 0;
+    border: 2px solid var(--dark-gray);
+    background-color: var(--light-gray);
+}
+
+div.author::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+div.author div.image {
+    float: left;
+    width: 40%;
+}
+
+div.author div.image img {
+    padding: 0 15px;
+}
+
+div.author div.information {
+    float: right;
+    width: 60%;
+}
+
+div.author div.information::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+div.author div.information span.name {
+    float: left;
+    width: 100%;
+    font-weight: bold;
+    color: var(--secondary);
+}
+
+div.author div.information span.type {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    color: var(--secondary);
+}

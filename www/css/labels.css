@@ -1,0 +1,33 @@
+.labelForm table tr th {
+    display: none;
+}
+
+.labelForm label input {
+    display: none;
+}
+
+.labelForm table tr td:after {
+    clear: both;
+}
+
+span.label,
+.labelForm label span {
+    display: block;
+    float: left;
+    margin: 5px;
+    padding: 2px 5px;
+    background-color: var(--white);
+    color: var(--light-gray);
+    border: 2px solid var(--light-gray);
+    border-radius: 5px;
+}
+
+span.label:first-of-type {
+    margin-left: 0;
+}
+
+.labelForm label span:hover,
+.labelForm label input:checked + span {
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}

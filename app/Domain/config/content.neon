@@ -1,0 +1,2 @@
+services:
+    content.service.contentService: Domain\Content\Service\ContentService

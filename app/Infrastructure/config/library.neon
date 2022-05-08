@@ -1,0 +1,5 @@
+services:
+    library.component.articleControl:
+        implement: Infrastructure\Library\Component\Article\ArticleControlFactory
+    library.component.listControl:
+        implement: Infrastructure\Library\Component\List\ListControlFactory

@@ -1,0 +1,2 @@
+services:
+    label.service.labelService: Domain\Label\Service\LabelService

@@ -1,0 +1,55 @@
+{varType Domain\Library\Entity\LibraryEntity $libraryEntity}
+{varType Domain\Label\Entity\LabelEntity[] $labels}
+
+{block content}
+    <div class="article">
+        <div class="intro">
+            <div class="left-column">
+                <div>
+                    <div class="headline">
+                        <h1 class="title">
+                            {$libraryEntity->getTitle()}
+                            <span class="created">
+                                ({$libraryEntity->getCreatedAt()|date:'d. m. Y'})
+                            </span>
+                        </h1>
+                    </div>
+                    <div class="labels">
+                        {foreach $labels as $label}
+                            <span class="label">{$label->getTitle()}</span>
+                        {/foreach}
+                    </div>
+                    <div class="image">
+                        <img
+                            class="fullwidth"
+                            src="http://localhost/{$libraryEntity->getImage()}"
+                            alt="{$libraryEntity->getTitle()}"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="author">
+                    <div class="image">
+                        <img
+                            class="profilePicture"
+                            src="http://localhost/images/userProfile.png"
+                            alt="{$libraryEntity->getAuthor()->getName()}"
+                        />
+                    </div>
+                    <div class="information">
+                        <span class="name">
+                            {$libraryEntity->getAuthor()->getName()}
+                        </span>
+                        <span class="type">
+                            {$libraryEntity->getAuthor()->getType()->getName()}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            {control articleContent}
+        </div>
+    </div>
+{/block}

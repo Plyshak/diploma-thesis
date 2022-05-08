@@ -1,0 +1,106 @@
+header {
+    position: relative;
+    width: 100%;
+    height: 75px;
+    border-bottom: 2pt solid var(--secondary);
+}
+
+header div.headerContainer {
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+    clear-after: both;
+    display: block;
+    float: right;
+}
+
+header div.headerContainer div.logo {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    float: right;
+}
+
+header div.headerContainer div.logo img.logo {
+    height: 100%;
+}
+
+header div.headerContainer div.menu {
+    position: relative;
+    width: 70%;
+    height: 100%;
+    float: right;
+}
+
+header div.headerContainer div.menu div.menuContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    float: right;
+}
+
+header div.headerContainer div.menu div.menuContainer div.menuItem {
+    float: right;
+    display: block;
+    margin: 12px 25px 0 0;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    text-underline: none;
+}
+
+header div.headerContainer div.menu div.menuContainer div.menuItem a,
+header div.headerContainer div.menu div.menuContainer div.menuItem a:visited {
+    color: var(--secondary);
+}
+
+header div.headerContainer div.menu div.menuContainer div.menuItem a:hover,
+header div.headerContainer div.menu div.menuContainer div.menuItem a.active {
+    color: var(--primary);
+}
+
+header div.headerContainer div.userProfile {
+    display: flex;
+    float: right;
+    width: 10%;
+    height: 100%;
+}
+
+header div.headerContainer div.userProfile div.userProfileContext {
+    margin: 20px 0 0 0;
+    width: 30px;
+    height: 30px;
+    display: block;
+    background-image: url("../images/userProfile.png");
+}
+
+header div.headerContainer div.userProfile div.userProfileContext div.userProfileMenu {
+    position: absolute;
+    visibility: hidden;
+    width: 200px;
+    background-color: #fff;
+    border: 2pt solid var(--primary);
+    border-radius: 6px;
+    padding: 8px;
+    z-index: 1;
+    top: 50px;
+    right: 5%;
+}
+
+header div.headerContainer div.userProfile div.userProfileContext:hover > div.userProfileMenu,
+header div.headerContainer div.userProfile div.userProfileContext div.userProfileMenu:hover {
+    visibility: visible;
+}
+
+header div.headerContainer div.userProfile div.userProfileContext div.userProfileMenu a.loginLink,
+header div.headerContainer div.userProfile div.userProfileContext div.userProfileMenu a.logoutLink,
+header div.headerContainer div.userProfile div.userProfileContext div.userProfileMenu a.loginLink:visited,
+header div.headerContainer div.userProfile div.userProfileContext div.userProfileMenu a.logoutLink:visited {
+    color: var(--secondary);
+}
+
+
+header div.headerContainer div.userProfile div.userProfileContext div.userProfileMenu a.loginLink:hover,
+header div.headerContainer div.userProfile div.userProfileContext div.userProfileMenu a.logoutLink:hover {
+    color: var(--primary);
+}

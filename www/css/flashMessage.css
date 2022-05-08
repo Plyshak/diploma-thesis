@@ -1,0 +1,25 @@
+div.flashMessageContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+div.flashMessageContainer div.flash {
+    position: relative;
+    width: 100%;
+}
+
+div.flashMessageContainer div.flash.success {
+    background-color: green; /* TODO */
+}
+
+div.flashMessageContainer div.flash.error {
+    background-color: red; /* TODO */
+}
+
+div.flashMessageContainer div.flash div.message {
+    position: relative;
+    padding: 5px 10px;
+    text-align: center;
+}

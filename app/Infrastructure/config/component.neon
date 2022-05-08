@@ -1,0 +1,7 @@
+services:
+    component.footerControl:
+        implement: Infrastructure\Component\Footer\FooterControlFactory
+    component.headerControl:
+        implement: Infrastructure\Component\Header\HeaderControlFactory
+    component.loginControl:
+        implement: Infrastructure\Component\Login\LoginControlFactory

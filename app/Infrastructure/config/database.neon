@@ -1,0 +1,12 @@
+services:
+    database.manager.library.libraryManager: Infrastructure\Database\Manager\LibraryManager
+    database.manager.label.labelBridgeManager: Infrastructure\Database\Manager\LabelBridgeManager
+    database.manager.label.labelStackManager: Infrastructure\Database\Manager\LabelStackManager
+    database.manager.label.labelManager: Infrastructure\Database\Manager\LabelManager
+    database.manager.content.plugin.textBlock: Infrastructure\Database\Manager\PluginTextBlockManager
+    database.manager.content.plugin.pictureBlock: Infrastructure\Database\Manager\PluginPictureBlockManager
+    database.manager.content.contentManager: Infrastructure\Database\Manager\ContentManager
+    database.manager.content.pluginManager: Infrastructure\Database\Manager\PluginManager
+    database.manager.user.usersManager: Infrastructure\Database\Manager\UsersManager
+    database.manager.user.userTypeManager: Infrastructure\Database\Manager\UserTypeManager
+    database.service.database: Infrastructure\Database\Service\Database

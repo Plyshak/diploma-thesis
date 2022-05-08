@@ -1,0 +1,17 @@
+{varType Domain\Library\Entity\LibraryEntity[] $articleList}
+
+{block listControl}
+    <div class="list">
+        <div class="filter">
+            {control filterForm}
+        </div>
+
+        <div class="library-article-list">
+            {foreach $articleList as $article}
+                {var $id = $article->getId()}
+                {control "article-$id"}
+                {sep}<div class="library-article-list-separator"></div>{/sep}
+            {/foreach}
+        </div>
+    </div>
+{/block}

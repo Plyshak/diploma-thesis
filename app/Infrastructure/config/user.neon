@@ -1,0 +1,3 @@
+services:
+    security.user: Infrastructure\User\Entity\User
+    user.service.authenticator: Infrastructure\User\Service\AuthenticatorService

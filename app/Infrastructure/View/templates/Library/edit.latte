@@ -1,0 +1,47 @@
+{varType Domain\Library\Entity\LibraryEntity $libraryEntity}
+
+{block content}
+    <div n:snippet="editLibraryArticle">
+        {if $libraryEntity->getAuthor()->getId() === $user->getId()}
+            {include withPermission}
+        {else}
+            {include withoutPermission}
+        {/if}
+    </div>
+{/block}
+
+{define withPermission}
+    <div class="edit-article">
+        <div class="intro">
+            <h1 class="title">
+                Upravit článek
+                <span class="article-name"> - "{$libraryEntity->getTitle()}"</span>
+            </h1>
+            <div class="image" n:if="!empty($libraryEntity->getImage())">
+                <img
+                    class="article-image"
+                    src="http://localhost/{$libraryEntity->getImage()}"
+                    alt="{$libraryEntity->getTitle()}"
+                />
+            </div>
+        </div>
+        <div class="information">
+            {control editArticleForm}
+        </div>
+        <div class="labels">
+            {control editArticleLabelsForm}
+        </div>
+        <div class="add-label">
+            {control addArticleLabelForm}
+        </div>
+        <div class="content">
+            {control editContent}
+        </div>
+    </div>
+{/define}
+
+{define withoutPermission}
+    <div class="no-permission">
+        Nemáte oprávnění upravovat článek - "{$libraryEntity->getTitle()}"!
+    </div>
+{/define}
