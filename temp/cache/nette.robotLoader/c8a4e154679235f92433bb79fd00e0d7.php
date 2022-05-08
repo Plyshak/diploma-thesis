@@ -385,7 +385,7 @@ return array (
     'Infrastructure\\Database\\Manager\\PluginPictureBlockManager' => 
     array (
       0 => '/var/www/app/Infrastructure/Database/Manager/PluginPictureBlockManager.php',
-      1 => 1652032753,
+      1 => 1652033452,
     ),
     'Infrastructure\\Database\\Manager\\PluginTextBlockManager' => 
     array (
@@ -520,23 +520,6 @@ return array (
   ),
   1 => 
   array (
-    'Infrastructure\\View\\LibraryEditTemplate' => 3,
-    'Infrastructure\\View\\LibraryTemplate' => 3,
-    'Infrastructure\\Component\\Header\\HeaderTemplate' => 3,
-    'Infrastructure\\Component\\Login\\LoginTemplate' => 3,
-    'Infrastructure\\Content\\Component\\ContentBuilder\\ContentBuilderTemplate' => 3,
-    'Infrastructure\\Content\\Component\\ListPlugin\\ListPluginTemplate' => 3,
-    'Infrastructure\\Content\\Component\\AddPlugin\\AddPluginTemplate' => 3,
-    'Infrastructure\\Component\\Footer\\FooterTemplate' => 3,
-    'Infrastructure\\Content\\Plugin\\Component\\TextBlock\\TextBlockPluginTemplate' => 3,
-    'Infrastructure\\View\\LibraryListTemplate' => 3,
-    'Infrastructure\\Library\\Component\\List\\ListTemplate' => 3,
-    'Infrastructure\\Library\\Component\\Article\\ArticleTemplate' => 3,
-    'Infrastructure\\View\\HomepageDefaultTemplate' => 3,
-    'Infrastructure\\View\\HomepageTemplate' => 3,
-    'Infrastructure\\View\\LibraryViewTemplate' => 3,
-    'Infrastructure\\Content\\Component\\Content\\ContentTemplate' => 3,
-    'Infrastructure\\Content\\Plugin\\Component\\PictureBlock\\PictureBlockPluginTemplate' => 3,
   ),
   2 => 
   array (
