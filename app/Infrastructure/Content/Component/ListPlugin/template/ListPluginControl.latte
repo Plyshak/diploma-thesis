@@ -44,11 +44,11 @@
                         </a>
                     </div>
                     <div class="plugin-edit-form">
-                        {control plugin-$i}
+                        {control plugin-{$i}}
                     </div>
                 </div>
             </div>
-            {control addPlugin-$count}
+            {control addPlugin-{$count}}
         {/foreach}
     </div>
 {/define}
@@ -56,7 +56,7 @@
 {define pluginLiveList}
     <div class="plugin-live-list">
         {foreach $plugins as $key => $plugin}
-            {control livePlugin-$key}
+            {control livePlugin-{$key}}
         {/foreach}
     </div>
 {/define}

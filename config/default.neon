@@ -12,4 +12,8 @@ di:
 		parameters: no
 		tags: no
 
+database:
+	dsn: 'pgsql:host=postgresql-db;port=5432;dbname=postgres'
+	user: postgres
+	password: diploma-thesis
 

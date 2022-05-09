@@ -105,7 +105,7 @@ return array (
     'Domain\\Content\\Service\\ContentService' => 
     array (
       0 => '/var/www/app/Domain/Content/Service/ContentService.php',
-      1 => 1651498274,
+      1 => 1652091221,
     ),
     'Domain\\Exception\\AbstractDomainException' => 
     array (
@@ -290,7 +290,7 @@ return array (
     'Infrastructure\\Content\\Component\\ContentBuilder\\ContentBuilderControl' => 
     array (
       0 => '/var/www/app/Infrastructure/Content/Component/ContentBuilder/ContentBuilderControl.php',
-      1 => 1651666060,
+      1 => 1652091166,
     ),
     'Infrastructure\\Content\\Component\\ContentBuilder\\ContentBuilderControlFactory' => 
     array (
@@ -355,7 +355,7 @@ return array (
     'Infrastructure\\Database\\Manager\\ContentManager' => 
     array (
       0 => '/var/www/app/Infrastructure/Database/Manager/ContentManager.php',
-      1 => 1651672199,
+      1 => 1652091379,
     ),
     'Infrastructure\\Database\\Manager\\LabelBridgeManager' => 
     array (
@@ -520,6 +520,24 @@ return array (
   ),
   1 => 
   array (
+    'Infrastructure\\View\\HomepageDefaultTemplate' => 2,
+    'Infrastructure\\View\\HomepageTemplate' => 2,
+    'Infrastructure\\Component\\Header\\HeaderTemplate' => 3,
+    'Infrastructure\\Component\\Login\\LoginTemplate' => 3,
+    'Infrastructure\\Component\\Footer\\FooterTemplate' => 3,
+    'Infrastructure\\View\\LibraryListTemplate' => 3,
+    'Infrastructure\\View\\LibraryTemplate' => 3,
+    'Infrastructure\\Library\\Component\\List\\ListTemplate' => 3,
+    'Infrastructure\\Library\\Component\\Article\\ArticleTemplate' => 3,
+    'Infrastructure\\View\\LibraryEditTemplate' => 3,
+    'Infrastructure\\Content\\Component\\ContentBuilder\\ContentBuilderTemplate' => 3,
+    'Infrastructure\\View\\LibraryViewTemplate' => 3,
+    'Infrastructure\\Content\\Component\\Content\\ContentTemplate' => 3,
+    'Infrastructure\\Content\\Component\\ListPlugin\\ListPluginTemplate' => 3,
+    'Infrastructure\\Content\\Component\\AddPlugin\\AddPluginTemplate' => 3,
+    'Infrastructure\\Content\\Plugin\\Component\\TextBlock\\TextBlockPluginTemplate' => 3,
+    'Infrastructure\\View\\CourseListTemplate' => 1,
+    'Infrastructure\\View\\CourseTemplate' => 1,
   ),
   2 => 
   array (

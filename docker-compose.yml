@@ -1,26 +1,1 @@
-version: "3.9"
-
-services:
-  apache:
-    container_name: php-apache
-    build:
-      context: ./docker/apache
-    ports:
-      - 80:80
-    volumes:
-      - ./www:/var/www/html
-      - ./:/var/www
-    depends_on:
-      - db
-  db:
-    container_name: postgresql-db
-    build:
-      context: ./docker/postgres
-    ports:
-      - 5432:5432
-    restart: always
-    healthcheck:
-      test: /usr/bin/pg_isready
-      interval: 5s
-      timeout: 10s
-      retries: 120
+version: "3.9"services:  apache:    container_name: php-apache    build:      context: ./docker/apache    ports:      - 80:80    volumes:      - ./www:/var/www/html      - ./:/var/www    depends_on:      - db  db:    container_name: postgresql-db    build:      context: ./docker/postgres    ports:      - 5432:5432    restart: always    healthcheck:      test: /usr/bin/pg_isready      interval: 5s      timeout: 10s      retries: 120

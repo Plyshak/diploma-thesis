@@ -1,6 +1,16 @@
 {varType Domain\Library\Entity\LibraryEntity $libraryEntity}
 
 {block content}
+    <div class="right-button-container">
+        <div>
+            <a class="button" data-type="secondary"
+                n:href="Library:list" data-ajax="false">Zpět na výpis</a>
+        </div>
+        <div>
+            <a class="button" data-type="secondary"
+                    n:href="Library:view $libraryEntity->getId()" data-ajax="false">Zobrazit článek</a>
+        </div>
+    </div>
     <div n:snippet="editLibraryArticle">
         {if $libraryEntity->getAuthor()->getId() === $user->getId()}
             {include withPermission}

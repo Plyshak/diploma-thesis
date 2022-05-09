@@ -20,4 +20,4 @@ alter table plugin
 INSERT INTO public.plugin
     (content_id, plugin, plugin_id, created_at, updated_at, visibility, position)
 VALUES
-    (1, 'textBlock', 6, '2022-05-05 14:46:07.512843', '2022-05-05 14:46:07.512843', true, 0);
+    (1, 'textBlock', 1, now(), now(), true, 0);

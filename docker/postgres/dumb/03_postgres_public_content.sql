@@ -14,4 +14,4 @@ alter table content
 INSERT INTO public.content
     (module, module_id, created_at, updated_at)
 VALUES
-    ('library', 5, '2022-05-04 12:06:09.626109', '2022-05-04 12:06:09.626109');
+    ('library', 1, now(), now());

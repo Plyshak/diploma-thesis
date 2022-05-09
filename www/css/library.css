@@ -80,16 +80,19 @@ div.library-article div.content div.view-link {
 }
 
 /* Single Article view */
+div.library div.intro,
 div.article div.intro {
     display: block;
 }
 
+div.library div.intro::after,
 div.article div.intro::after {
     display: table;
     clear: both;
     content: "";
 }
 
+div.library div.intro div.left-column,
 div.article div.intro div.left-column {
     float: left;
     width: 80%;
@@ -109,9 +112,14 @@ div.article div.intro div.left-column div div.image {
     width: 100%;
 }
 
+div.library div.intro div.right-column,
 div.article div.intro div.right-column {
     float: right;
     width: 15%;
+}
+
+div.library div.intro div.right-column .add-article {
+    margin: 25px 10px 0 0;
 }
 
 div.author {

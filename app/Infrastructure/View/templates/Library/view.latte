@@ -2,6 +2,16 @@
 {varType Domain\Label\Entity\LabelEntity[] $labels}
 
 {block content}
+    <div class="right-button-container">
+        <div>
+            <a class="button" data-type="secondary"
+                n:href="Library:list" data-ajax="false">Zpět na výpis</a>
+        </div>
+        <div n:if="$user->getId() === $libraryEntity->getAuthor()->getId()">
+            <a class="button" data-type="secondary"
+                n:href="Library:edit, $libraryEntity->getId()" data-ajax="false">Upravit</a>
+        </div>
+    </div>
     <div class="article">
         <div class="intro">
             <div class="left-column">

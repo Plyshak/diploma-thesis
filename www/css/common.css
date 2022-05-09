@@ -115,6 +115,21 @@ form.autoSubmitForm input[type=submit] {
     display: none;
 }
 
+.right-button-container {
+    margin: 10px 0 0 0;
+}
+
+.right-button-container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.right-button-container div {
+    float: right;
+    padding: 0 5px 0 0;
+}
+
 .button {
     text-align: center;
     text-transform: uppercase;
@@ -133,12 +148,14 @@ form.autoSubmitForm input[type=submit] {
     background-color: var(--secondary);
 }
 
+.button[data-type=secondary],
 .button[target=_blank] {
     border: 2px solid var(--secondary);
     background-color: var(--secondary);
     color: var(--white);
 }
 
+.button[data-type=secondary],
 .button[target=_blank]:hover {
     border: 2px solid var(--light-gray);
     background-color: var(--light-gray);

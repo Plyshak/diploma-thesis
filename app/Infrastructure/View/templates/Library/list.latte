@@ -4,17 +4,20 @@
 {block content}
     <div class="library">
         <div class="intro">
-            <h1 class="title">
-                Články v knihovně
-                <span class="article-count"> - {$libraryArticleCount} {$libraryArticleCountText}</span>
-            </h1>
-
-            <div class="add-article" n:if="$user->isLoggedIn()">
-                <a n:href="addArticle! $user->getId()" data-ajax="false">
-                    <span class="button-link">
+            <div class="left-column">
+                <h1 class="title">
+                    Články v knihovně
+                    <span class="article-count"> - {$libraryArticleCount} {$libraryArticleCountText}</span>
+                </h1>
+            </div>
+            <div class="right-column">
+                <div class="add-article" n:if="$user->isLoggedIn()">
+                    <a n:href="addArticle! $user->getId()" data-ajax="false">
+                    <span class="button">
                         Přidat článek
                     </span>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="library-list" n:snippet="libraryArticleList">

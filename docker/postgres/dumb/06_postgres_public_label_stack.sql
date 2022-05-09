@@ -14,4 +14,4 @@ alter table label_stack
 INSERT INTO public.label_stack
     (module, module_id, created_at, updated_at)
 VALUES
-    ('library', 5, '2022-05-05 18:12:43.821532', '2022-05-05 18:12:43.821532');
+    ('library', 1, now(), now());
