@@ -9,7 +9,7 @@ interface LabelStackRepositoryInterface
 {
     public function create(array $data) : LabelStackEntity;
 
-    public function delete(array $conditions) : bool;
+    public function delete(LabelStackEntity $labelStackEntity) : bool;
 
     public function findByModuleEntity(LabelInterface $contentEntity) : ?LabelStackEntity;
 }

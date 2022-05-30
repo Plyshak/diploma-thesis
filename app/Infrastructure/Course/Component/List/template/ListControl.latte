@@ -1,0 +1,40 @@
+{varType Domain\Course\Entity\CourseEntity[] $articleList}
+
+{block listControl}
+    <div class="library">
+        <div class="intro">
+            <div class="left-column">
+                <h1 class="title">
+                    Kurzy
+                </h1>
+            </div>
+            <div class="right-column">
+                <div class="add-article"
+                        n:if="$user->isLoggedIn()
+                            && $user->getIdentity()->getType()->getPermissionLevel() > 1"
+                >
+                    <a n:href="addArticle! $user->getId()" data-ajax="false">
+                    <span class="button">
+                        Přidat kurz
+                    </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="library-list" n:snippet="libraryArticleList">
+            <div class="list">
+                <div class="filter">
+                    {control filterForm}
+                </div>
+
+                <div class="library-article-list">
+                    {foreach $articleList as $article}
+                        {var $id = $article->getId()}
+                        {control "article-$id"}
+                        {sep}<div class="library-article-list-separator"></div>{/sep}
+                    {/foreach}
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}

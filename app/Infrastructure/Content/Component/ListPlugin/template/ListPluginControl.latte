@@ -10,22 +10,21 @@
         {else}
             {include oneCol}
         {/if}
-
-        {include liveView}
     </div>
 {/block}
 
 {define twoCols}
-    <div class="left-column">
-        {include pluginList}
-    </div>
-    <div class="right-column">
+    {include pluginList}
+    {include liveView}
+    <div class="popup-plugin">
         {include pluginLiveList}
     </div>
+    {include liveView}
 {/define}
 
 {define oneCol}
     {include pluginList}
+    {include liveView}
 {/define}
 
 {define pluginList}

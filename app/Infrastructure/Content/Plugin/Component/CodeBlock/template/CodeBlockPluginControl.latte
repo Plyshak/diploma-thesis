@@ -1,0 +1,31 @@
+{varType Domain\Content\Entity\Plugin\PluginCodeBlockEntity $entity}
+
+{block content}
+    <div class="plugin-code-block plugin-item">
+        {include header}
+        {include body}
+        {include footer}
+    </div>
+{/block}
+
+{define header}
+    <div class="plugin-header">
+        <div class="subtitle" n:if="$entity->isShowTitle()">{$entity->getTitle()}</div>
+    </div>
+{/define}
+
+{define body}
+    <div class="plugin-body">
+        <div class="body">
+            <div class="code-language">
+                <span>{$entity->getLanguage()}</span>
+            </div>
+            <pre class="line-numbers"><code class="language-{$entity->getLanguage()}">{$entity->getCode()}</code></pre>
+        </div>
+    </div>
+{/define}
+
+{define footer}
+    <div class="plugin-footer">
+    </div>
+{/define}

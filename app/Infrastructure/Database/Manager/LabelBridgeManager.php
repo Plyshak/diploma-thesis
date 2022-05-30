@@ -18,7 +18,11 @@ class LabelBridgeManager extends AbstractManager implements LabelBridgeRepositor
 
     public function delete(LabelBridgeEntity $labelBridgeEntity): bool
     {
-        // TODO: Implement delete() method.
+        $rows = $this->getTable()
+            ->where(['id' => $labelBridgeEntity->getId()])
+            ->delete();
+
+        return $rows > 0;
     }
 
     public function deleteByModuleEntity(LabelStackEntity $labelStackEntity): bool

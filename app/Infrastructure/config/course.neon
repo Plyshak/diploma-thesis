@@ -1,0 +1,7 @@
+services:
+    course.component.smartEdit.smartEditControl:
+        implement: Infrastructure\Course\Component\SmartEdit\SmartEditControlFactory
+    course.component.article.articleControl:
+        implement: Infrastructure\Course\Component\Article\ArticleControlFactory
+    course.component.list.listControl:
+        implement: Infrastructure\Course\Component\List\ListControlFactory

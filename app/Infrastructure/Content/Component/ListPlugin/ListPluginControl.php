@@ -4,6 +4,7 @@ namespace Infrastructure\Content\Component\ListPlugin;
 
 use Domain\Content\Entity\ContentEntity;
 use Domain\Content\Entity\Plugin\PluginBlockEntityInterface;
+use Domain\Content\Entity\PluginEntity;
 use Infrastructure\Component\AbstractControl;
 use Infrastructure\Content\Component\AddPlugin\AddPluginControlFactory;
 use Infrastructure\Content\Service\PluginFormFactoryService;
@@ -71,7 +72,9 @@ class ListPluginControl extends AbstractControl
         return new Multiplier(function (string $position) {
             $control = $this->addPluginControlFactory->create($this->entity);
             $control->setPosition((int) $position);
-            $control->onAfterPluginAdded[] = function() {
+            $control->onAfterPluginAdded[] = function(PluginEntity $pluginEntity) use ($position) {
+                $this->pluginService->increasePluginsPosition($this->entity, $pluginEntity, $position);
+
                 $this->redrawControl();
             };
 

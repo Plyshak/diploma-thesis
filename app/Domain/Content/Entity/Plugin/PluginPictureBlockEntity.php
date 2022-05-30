@@ -4,6 +4,8 @@ namespace Domain\Content\Entity\Plugin;
 
 class PluginPictureBlockEntity extends AbstractPluginBlockEntity
 {
+    public const PREFIX = 'pictureBlock';
+
     protected $image;
     protected $pictureDescription;
     protected $pictureAlign;
@@ -56,6 +58,6 @@ class PluginPictureBlockEntity extends AbstractPluginBlockEntity
 
     public function getPluginPrefix(): string
     {
-        return 'pictureBlock';
+        return self::PREFIX;
     }
 }

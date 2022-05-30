@@ -1,5 +1,5 @@
 /* Article List - Single Article */
-div.library-article-list-separator {
+div.module-library div.library-article-list-separator {
     display: block;
     width: 100%;
     height: 0;
@@ -7,64 +7,64 @@ div.library-article-list-separator {
     margin: 10px 0;
 }
 
-div.library-article {
+div.module-library div.library-article {
     position: relative;
     display: block;
 }
 
-div.library-article::after {
+div.module-library div.library-article::after {
     display: table;
     clear: both;
     content: "";
 }
 
-div.library-article div.image {
+div.module-library div.library-article div.image {
     float: left;
     width: 20%;
 }
 
-div.library-article div.image img {
+div.module-library div.library-article div.image img {
     max-height: 100%;
     max-width: 100%;
 }
 
-div.library-article div.content {
+div.module-library div.library-article div.content {
     float: left;
     width: 80%;
 }
 
-div.library-article div.content::after {
+div.module-library div.library-article div.content::after {
     display: table;
     clear: both;
     content: "";
 }
 
-div.library-article div.content div.title {
+div.module-library div.library-article div.content div.title {
     float: left;
     width: 75%;
     min-height: 20%;
     padding: 10px 0 0 10px;
 }
 
-div.library-article div.content div.edit-link {
+div.module-library div.library-article div.content div.edit-link {
     float: right;
     width: 20%;
     min-height: 20%;
     padding: 0 10px 0 0;
 }
 
-div.library-article div.content div.perex {
+div.module-library div.library-article div.content div.perex {
     float: left;
     width: 100%;
     min-height: 60%;
     padding: 15px 10px 20px 10px;
 }
 
-div.library-article div.content div.perex::first-letter {
+div.module-library div.library-article div.content div.perex::first-letter {
     text-transform: capitalize;
 }
 
-div.library-article div.content div.labels {
+div.module-library div.library-article div.content div.labels {
     align-self: flex-end;
     float: left;
     width: 75%;
@@ -72,7 +72,7 @@ div.library-article div.content div.labels {
     padding: 5px 0 0 10px;
 }
 
-div.library-article div.content div.view-link {
+div.module-library div.library-article div.content div.view-link {
     float: right;
     width: 20%;
     height: 20%;
@@ -80,49 +80,49 @@ div.library-article div.content div.view-link {
 }
 
 /* Single Article view */
-div.library div.intro,
-div.article div.intro {
+div.module-library div.library div.intro,
+div.module-library div.article div.intro {
     display: block;
 }
 
-div.library div.intro::after,
-div.article div.intro::after {
+div.module-library div.library div.intro::after,
+div.module-library div.article div.intro::after {
     display: table;
     clear: both;
     content: "";
 }
 
-div.library div.intro div.left-column,
-div.article div.intro div.left-column {
+div.module-library div.library div.intro div.left-column,
+div.module-library div.article div.intro div.left-column {
     float: left;
     width: 80%;
 }
 
-div.article div.intro div.left-column > div {
+div.module-library div.article div.intro div.left-column > div {
     padding: 0 0 0 25px;
 }
 
-div.article div.intro div.left-column div div.labels {
+div.module-library div.article div.intro div.left-column div div.labels {
     display: block;
     width: 100%;
 }
 
-div.article div.intro div.left-column div div.image {
+div.module-library div.article div.intro div.left-column div div.image {
     display: block;
     width: 100%;
 }
 
-div.library div.intro div.right-column,
-div.article div.intro div.right-column {
+div.module-library div.library div.intro div.right-column,
+div.module-library div.article div.intro div.right-column {
     float: right;
     width: 15%;
 }
 
-div.library div.intro div.right-column .add-article {
+div.module-library div.library div.intro div.right-column .add-article {
     margin: 25px 10px 0 0;
 }
 
-div.author {
+div.module-library div.author {
     display: block;
     width: 100%;
     margin-top: 25px;
@@ -131,40 +131,40 @@ div.author {
     background-color: var(--light-gray);
 }
 
-div.author::after {
+div.module-library div.author::after {
     content: "";
     clear: both;
     display: table;
 }
 
-div.author div.image {
+div.module-library div.author div.image {
     float: left;
     width: 40%;
 }
 
-div.author div.image img {
+div.module-library div.author div.image img {
     padding: 0 15px;
 }
 
-div.author div.information {
+div.module-library div.author div.information {
     float: right;
     width: 60%;
 }
 
-div.author div.information::after {
+div.module-library div.author div.information::after {
     content: "";
     clear: both;
     display: table;
 }
 
-div.author div.information span.name {
+div.module-library div.author div.information span.name {
     float: left;
     width: 100%;
     font-weight: bold;
     color: var(--secondary);
 }
 
-div.author div.information span.type {
+div.module-library div.author div.information span.type {
     float: left;
     width: 100%;
     margin-top: 10px;

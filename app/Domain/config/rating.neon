@@ -1,0 +1,2 @@
+services:
+    rating.service.ratingService: Domain\Rating\Service\RatingService

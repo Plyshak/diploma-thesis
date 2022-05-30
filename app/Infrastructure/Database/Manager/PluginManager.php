@@ -41,6 +41,7 @@ class PluginManager extends AbstractManager implements PluginRepositoryInterface
 
         $rows = $this->getTable()
             ->where(['content_id' => $contentEntity->getId()])
+            ->order('position')
             ->fetchAll();
 
         foreach ($rows as $row) {
@@ -84,6 +85,32 @@ class PluginManager extends AbstractManager implements PluginRepositoryInterface
             ->delete();
 
         return $count === 1;
+    }
+
+    public function update(PluginEntity $pluginEntity, array $values) : bool
+    {
+        $values['updated_at'] = 'now()';
+
+        $rows = $this->getTable()
+            ->where(['id' => $pluginEntity->getId()])
+            ->update($values);
+
+        return $rows > 1;
+    }
+
+    public function updatePosition(PluginEntity $pluginEntity) : bool
+    {
+        $sql = sprintf('
+            UPDATE plugin
+            SET position = (position + 1)
+            WHERE 
+                id = %d
+        ', $pluginEntity->getId());
+
+        $rows = $this->database->query($sql)
+            ->fetchAll();
+
+        return $rows > 0;
     }
 
     private function createPluginEntity(array $data) : PluginEntity

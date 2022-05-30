@@ -1,0 +1,3 @@
+services:
+    rating.component.rating.factory:
+        implement: Infrastructure\Rating\Component\Rating\RatingControlFactory

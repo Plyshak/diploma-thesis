@@ -1,0 +1,101 @@
+{varType Domain\Course\Entity\CourseEntity $courseEntity}
+
+{block content}
+    <div class="right-button-container">
+        <div>
+            <a class="button" data-type="secondary"
+                    n:href="Course:list" data-ajax="false">Zpět na výpis</a>
+        </div>
+        <div>
+            <a class="button" data-type="secondary"
+                    n:href="Course:view $courseEntity->getId()" data-ajax="false">Zobrazit kurz</a>
+        </div>
+    </div>
+    <div n:snippet="editLibraryArticle">
+        {if $courseEntity->getAuthor()->getId() === $user->getId()}
+            {include withPermission}
+        {else}
+            {include withoutPermission}
+        {/if}
+    </div>
+{/block}
+
+
+{define withPermission}
+    <div class="article">
+        <div class="intro">
+            <div class="left-column">
+                <div>
+                    <div class="headline">
+                        <h1 class="title">
+                            Upravit kurz
+                            <span>
+                                - {$courseEntity->getTitle()}
+                            </span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="informations">
+                {control courseEditForm}
+            </div>
+
+            <div class="left-column">
+                {include structure}
+            </div>
+            <div class="right-column">
+                <div class="plugins">
+                    {control smartEdit}
+                </div>
+            </div>
+        </div>
+    </div>
+{/define}
+
+{define structure}
+    <div class="course-structure">
+        {var $chapters = $courseEntity->getChapters()}
+        {varType Domain\Course\Entity\ChapterEntity[] $chapters}
+        {foreach $chapters as $chapter}
+            <div class="course-chapter">
+                <a n:href="setSmartEdit!, 'chapter', $chapter->getId()">
+                    {if $chapter->isRepetition()}
+                        Testování
+                    {else}
+                        Kapitola
+                    {/if}
+                    {$chapter->getPosition()}
+                </a>
+
+                {var $pages = $chapter->getPages()}
+                {varType Domain\Course\Entity\PageEntity[] $pages}
+                {foreach $pages as $page}
+                    <div class="course-page">
+                        <a n:href="setSmartEdit!, 'page', $page->getId()">
+                            Strana - {$page->getPosition()}
+                        </a>
+                    </div>
+                {/foreach}
+                <div class="add-page">
+                    <a n:href="addPage!, $chapter->getId()">
+                        Přidat stranu
+                    </a>
+                </div>
+            </div>
+        {/foreach}
+        <div class="add-chapter">
+            <a n:href="addChapter!">
+                Přidat kapitolu
+            </a>
+        </div>
+    </div>
+{/define}
+
+
+{define withoutPermission}
+    <div class="no-permission">
+        Nemáte oprávnění upravovat kurz - "{$courseEntity->getTitle()}"!
+    </div>
+{/define}

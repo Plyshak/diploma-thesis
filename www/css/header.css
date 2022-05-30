@@ -71,7 +71,15 @@ header div.headerContainer div.userProfile div.userProfileContext {
     width: 30px;
     height: 30px;
     display: block;
-    background-image: url("../images/userProfile.png");
+    background-size: cover;
+}
+
+header div.headerContainer div.userProfile div.userProfileContext.logged-in {
+    background-image: url("../images/user-profile-login.png");
+}
+
+header div.headerContainer div.userProfile div.userProfileContext.logged-out {
+    background-image: url("../images/user-profile-logout.png");
 }
 
 header div.headerContainer div.userProfile div.userProfileContext div.userProfileMenu {

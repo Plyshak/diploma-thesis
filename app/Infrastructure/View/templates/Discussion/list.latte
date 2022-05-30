@@ -1,3 +1,27 @@
+{varType int $discussionArticleCount}
+{varType string $discussionArticleCountText}
+
 {block content}
-    list discussion
+    <div class="library"  n:snippet="libraryArticleList">
+        <div class="intro">
+            <div class="left-column">
+                <h1 class="title">
+                    Diskuze
+                    <span class="article-count"> - {$discussionArticleCount} {$discussionArticleCountText}</span>
+                </h1>
+            </div>
+            <div class="right-column">
+                <div class="add-article" n:if="$user->isLoggedIn()">
+                    <a n:href="addArticle! $user->getId()" data-ajax="false">
+                        <span class="button">
+                            Přidat téma
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="library-list">
+            {control list}
+        </div>
+    </div>
 {/block}

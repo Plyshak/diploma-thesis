@@ -1,7 +1,8 @@
 {varType Nette\Security\User $user}
+{varType Infrastructure\User\Entity\UserIdentity[] $users}
 
 {block content}
-    <div class="userProfileContext">
+    <div class="userProfileContext {$user->isLoggedIn() ? 'logged-in' : 'logged-out'}">
         <div class="userProfileMenu" n:snippet="login">
             {if $user->isLoggedIn()}
                 {include userProfile}
@@ -17,22 +18,19 @@
         Přihlásit se:
     </span>
     <ul class="no-list">
-        <li>
-            <a class="loginLink" n:href="login! 'Uživatel'">Uživatel</a>
-        </li>
-        <li>
-            <a class="loginLink" n:href="login! 'Lektor'">Lektor</a>
-        </li>
-        <li>
-            <a class="loginLink" n:href="login! 'Administrátor'">Administrátor</a>
-        </li>
+        {foreach $users as $userEntity}
+            <li>
+                <a class="loginLink" n:href="login! $userEntity->getName()">{$userEntity->getName()}</a>
+            </li>
+        {/foreach}
     </ul>
 {/define}
 
 {define userProfile}
     <p>
         {var Domain\User\Entity\UserInterface $identity = $user->getIdentity()}
-        {$identity->getName()}
+        Jméno: {$identity->getName()}<br />
+        Pozice: {$identity->getType()->getName()}
     </p>
     <ul>
         <li>

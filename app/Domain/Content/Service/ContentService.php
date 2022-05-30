@@ -32,6 +32,7 @@ class ContentService
     {
         return $this->getContent($entity) !== null;
     }
+
     /**
      * @param ContentInterface $entity
      */

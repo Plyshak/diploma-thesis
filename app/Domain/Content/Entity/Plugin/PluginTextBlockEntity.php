@@ -2,8 +2,10 @@
 
 namespace Domain\Content\Entity\Plugin;
 
-class PluginTextBlockEntity extends AbstractPluginBlockEntity
+class PluginTextBlockEntity extends AbstractPluginBlockEntity implements DescriptionPluginInterface
 {
+    public const PREFIX = 'textBlock';
+
     protected $perex;
     protected $body;
     protected $buttonTitle;
@@ -94,6 +96,19 @@ class PluginTextBlockEntity extends AbstractPluginBlockEntity
 
     public function getPluginPrefix(): string
     {
-        return 'textBlock';
+        return self::PREFIX;
+    }
+
+    public function getShortDescription(): string
+    {
+        $shortDescription = '';
+
+        if (!empty($this->perex)) {
+            $shortDescription = $this->perex;
+        } elseif (!empty($this->body)) {
+            $shortDescription = $this->body;
+        }
+
+        return $shortDescription;
     }
 }

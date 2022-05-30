@@ -15,4 +15,8 @@ interface PluginRepositoryInterface
     public function findByPluginBlockEntity(PluginBlockEntityInterface $pluginEntity) : PluginEntity;
 
     public function delete(PluginEntity $pluginEntity) : bool;
+
+    public function update(PluginEntity $pluginEntity, array $values) : bool;
+
+    public function updatePosition(PluginEntity $pluginEntity);
 }

@@ -1,4 +1,10 @@
 services:
+    content.plugin.component.liveCode.factory:
+        implement: Infrastructure\Content\Plugin\Component\LiveCode\LiveCodePluginControlFactory
+    content.plugin.component.codeBlock.factory:
+        implement: Infrastructure\Content\Plugin\Component\CodeBlock\CodeBlockPluginControlFactory
+    content.plugin.component.testForm.factory:
+        implement: Infrastructure\Content\Plugin\Component\TestForm\TestFormPluginControlFactory
     content.plugin.component.pictureBlock.factory:
         implement: Infrastructure\Content\Plugin\Component\PictureBlock\PictureBlockPluginControlFactory
     content.plugin.component.textBlock.factory:
@@ -11,5 +17,7 @@ services:
         implement: Infrastructure\Content\Component\ContentBuilder\ContentBuilderControlFactory
     content.component.listPlugin:
         implement: Infrastructure\Content\Component\ListPlugin\ListPluginControlFactory
+    content.service.translator.databaseResultTranslator: Infrastructure\Content\Service\Translator\DatabaseResultTranslator
+    content.service.liveCodeExecutionProvider: Infrastructure\Content\Service\LiveCodeExecutionProvider
     content.service.pluginFormFactory: Infrastructure\Content\Service\PluginFormFactoryService
     content.service.pluginService: Infrastructure\Content\Service\PluginService

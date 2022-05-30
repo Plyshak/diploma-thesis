@@ -3,10 +3,10 @@
 namespace Infrastructure\Library\Component\List;
 
 use Domain\Label\Entity\LabelEntity;
+use Domain\Label\Repository\LabelRepositoryInterface;
+use Domain\Library\Repository\LibraryRepositoryInterface;
 use Domain\Shared\Collection\Collection;
 use Infrastructure\Component\AbstractControl;
-use Infrastructure\Database\Manager\LabelManager;
-use Infrastructure\Database\Manager\LibraryManager;
 use Infrastructure\Library\Component\Article\ArticleControlFactory;
 use Nette\Application\UI\Form;
 use Nette\Application\UI\Multiplier;
@@ -20,8 +20,8 @@ class ListControl extends AbstractControl
     protected $articleControlFactory;
 
     public function __construct(
-        LabelManager $labelManager,
-        LibraryManager $libraryManager,
+        LabelRepositoryInterface $labelManager,
+        LibraryRepositoryInterface $libraryManager,
         ArticleControlFactory $articleControlFactory
     ) {
         $this->labelManager = $labelManager;

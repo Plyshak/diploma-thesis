@@ -1,0 +1,2 @@
+services:
+    course.service.courseService: Domain\Course\Service\CourseService

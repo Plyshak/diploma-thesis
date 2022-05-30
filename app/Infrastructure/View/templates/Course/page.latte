@@ -1,0 +1,125 @@
+{varType Domain\Course\Entity\CourseEntity $courseEntity}
+{varType Domain\Course\Entity\ChapterEntity $chapterEntity}
+{varType Domain\Course\Entity\PageEntity $pageEntity}
+
+{block content}
+    <div n:snippet="editLibraryArticle">
+        {if ($courseEntity->isPublic() && $courseEntity->isVisibility())
+            || (!$courseEntity->isPublic() && $user->isLoggedIn() && $courseEntity->isVisibility())
+            || $courseEntity->getAuthor()->getId() === $user->getId()
+        }
+            {include withPermission}
+        {else}
+            {include withoutPermission}
+        {/if}
+    </div>
+{/block}
+
+{define withPermission}
+    <div class="article">
+        <div class="intro">
+            <div class="left-column">
+                <div>
+                    <div class="headline">
+                        <h1 class="title">
+                            {$courseEntity->getTitle()}
+                            <span>
+                                -
+                                {if $chapterEntity->isRepetition()}
+                                    Testování {$chapterEntity->getPosition()}
+                                {else}
+                                    Kapitola {$chapterEntity->getPosition()}
+                                {/if}
+                            </span>
+                            <span>
+                                - Strana {$pageEntity->getPosition()}/{$chapterEntity->getPages()->count()}
+                            </span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            {control pageContent}
+        </div>
+        <div class="buttons">
+            {include previousButton}
+            {include nextButton}
+        </div>
+    </div>
+{/define}
+
+{define previousButton}
+    <div class="left-column">
+        {var $chapterPosition = 0}
+        {var $pagePosition = 0}
+        {var $text = 'Zpět na přehled kurzu'}
+        {var $link = 'pageLink'}
+
+        {* First Chapter and first Page -> course view *}
+        {if $courseEntity->getChapters()->isFirst($chapterEntity)
+            && $chapterEntity->getPages()->isFirst($pageEntity)
+        }
+            {do $link = 'viewLink'}
+        {* Common Chapter and first Page -> previous Chapter and last Page*}
+        {elseif $chapterEntity->getPages()->isFirst($pageEntity)}
+            {do $chapterPosition = $chapterEntity->getPosition() - 1}
+            {do $pagePosition = $courseEntity->getChapters()->getItem($chapterPosition - 1)->getPages()->count()}
+            {do $text = 'Předchozí kapitola'}
+        {* Common Chapter and common Page -> previous page *}
+        {else}
+            {do $chapterPosition = $chapterEntity->getPosition()}
+            {do $pagePosition = $pageEntity->getPosition() - 1}
+            {do $text = 'Předchozí strana'}
+        {/if}
+
+        {include block $link, ($courseEntity->getId()), $chapterPosition, $pagePosition, $text}
+    </div>
+{/define}
+
+{define nextButton}
+    <div class="right-column">
+        {var $chapterPosition = 0}
+        {var $pagePosition = 0}
+        {var $text = 'Ukončit kurz'}
+        {var $link = 'pageLink'}
+
+        {* Last Chapter and last Page -> course view *}
+        {if $courseEntity->getChapters()->isLast($chapterEntity)
+            && $chapterEntity->getPages()->isLast($pageEntity)
+        }
+            {do $link = 'viewLink'}
+        {* Common Chapter and last Page -> next Chapter and first Page*}
+        {elseif $chapterEntity->getPages()->isLast($pageEntity)}
+            {do $chapterPosition = $chapterEntity->getPosition() + 1}
+            {do $pagePosition = 1}
+            {do $text = 'Další kapitola'}
+        {* Common Chapter and common Page -> next page *}
+        {else}
+            {do $chapterPosition = $chapterEntity->getPosition()}
+            {do $pagePosition = $pageEntity->getPosition() + 1}
+            {do $text = 'Další strana'}
+        {/if}
+
+        {include block $link, ($courseEntity->getId()), $chapterPosition, $pagePosition, $text}
+    </div>
+{/define}
+
+{define viewLink, $courseId, $chapterPosition, $pagePosition, $text}
+    <a class="button" data-type="secondary"
+            n:href="Course:view, $courseId"
+       data-ajax="false">{$text}</a>
+{/define}
+
+{define pageLink, $courseId, $chapterPosition, $pagePosition, $text}
+    <a class="button" data-type="secondary"
+            n:href="Course:page, $courseId, $chapterPosition, $pagePosition"
+       data-ajax="false">{$text}</a>
+{/define}
+
+
+{define withoutPermission}
+    <div class="no-permission">
+        Nemáte oprávnění vidět kurz - "{$courseEntity->getTitle()}"!
+    </div>
+{/define}

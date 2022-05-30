@@ -3,20 +3,19 @@
 namespace Infrastructure\Content\Component\Content;
 
 use Domain\Content\Entity\ContentInterface;
-use Domain\Content\Entity\Plugin\PluginBlockEntityInterface;
 use Domain\Content\Service\ContentService;
 use Infrastructure\Component\AbstractControl;
 use Infrastructure\Content\Service\PluginService;
 use Nette\Application\UI\Multiplier;
 
+/**
+ * @persistent(plugin)
+ */
 class ContentControl extends AbstractControl
 {
     protected $contentableEntity;
     protected $contentService;
     protected $pluginService;
-
-    /** @var PluginBlockEntityInterface[] */
-    protected $plugins;
 
     public function __construct(
         ContentInterface $contentEntity,
@@ -32,17 +31,17 @@ class ContentControl extends AbstractControl
     {
         parent::addTemplateParameters();
 
-        $this->template->plugins = $this->plugins = $this->getPlugins();
+        $this->template->plugins = $this->getPlugins();
     }
 
     public function createComponentPlugin(): Multiplier
     {
         return new Multiplier(function (string $key) {
-            $entity = $this->plugins[$key];
+            $plugins = $this->getPlugins();
 
-            $control = $this->pluginService->getPluginFactory($entity)->create($entity);
+            $entity = $plugins[$key];
 
-            return $control;
+            return $this->pluginService->getPluginFactory($entity)->create($entity);
         });
     }
 

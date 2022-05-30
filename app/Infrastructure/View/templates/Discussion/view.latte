@@ -1,0 +1,117 @@
+{varType Domain\Discussion\Entity\DiscussionEntity $discussionEntity}
+{varType Domain\Label\Entity\LabelEntity[] $labels}
+
+{block content}
+    <div class="right-button-container">
+        <div>
+            <a class="button" data-type="secondary"
+                n:href="Discussion:list" data-ajax="false">Zpět na výpis</a>
+        </div>
+        <div n:if="$user->getId() === $discussionEntity->getAuthor()->getId()">
+            <a class="button" data-type="secondary"
+                n:href="Discussion:edit, $discussionEntity->getId()" data-ajax="false">Upravit</a>
+        </div>
+    </div>
+    <div class="article">
+        <div class="intro">
+            <div class="left-column">
+                <div>
+                    <div class="headline">
+                        <h1 class="title">
+                            {$discussionEntity->getTitle()}
+                            <span class="created">
+                                ({$discussionEntity->getCreatedAt()|date:'d. m. Y'})
+                            </span>
+                        </h1>
+                    </div>
+                    <div class="course" n:if="$discussionEntity->getCourse()">
+                        <span class="subtitle">{$discussionEntity->getCourse()->getTitle()}</span>
+                    </div>
+                    <div class="labels">
+                        {foreach $labels as $label}
+                            <span class="label">{$label->getTitle()}</span>
+                        {/foreach}
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="discussion">
+                    <table>
+                        <tr>
+                            <td>Stav:</td>
+                            <td>{$discussionEntity->isSolved() ? 'vyřešeno' : 'nevyřešeno'}</td>
+                        </tr>
+                        <tr>
+                            <td>Téma založeno:</td>
+                            <td>{$discussionEntity->getCreatedAt()|date:'d. m. Y'}</td>
+                        </tr>
+                        <tr>
+                            <td>Poslední aktivita:</td>
+                            <td>{$discussionEntity->getLastActivity()|date:'d. m. Y'}</td>
+                        </tr>
+                        <tr>
+                            <td>Zobrazeno</td>
+                            <td>{$discussionEntity->getViewed()}x</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="author">
+                    <div class="container">
+                        <div class="image">
+                            <img
+                                    class="profilePicture"
+                                    src="http://localhost/images/user-profile-{$user->isLoggedIn() && $user->getId() === $discussionEntity->getAuthor()->getId() ? 'login' : 'logout'}.png"
+                                    alt="{$discussionEntity->getAuthor()->getName()}"
+                            />
+                        </div>
+                        <div class="information">
+                        <span class="name">
+                            {$discussionEntity->getAuthor()->getName()}
+                        </span>
+                            <span class="type">
+                            {$discussionEntity->getAuthor()->getType()->getName()}
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            {control articleContent}
+        </div>
+        {if $discussionEntity->getCommentsCount() > 0}
+            {include addComment}
+        {/if}
+        <div class="comments">
+            <div class="intro">
+                <div class="headline">
+                    <h2 class="subtitle">
+                        Odpovědí:
+                        <span>{$discussionEntity->getCommentsCount()}</span>
+                    </h2>
+                </div>
+            </div>
+            <div class="content">
+                {foreach $discussionEntity->getComments() as $comment}
+                    {var $id = $comment->getId()}
+                    {control "comment-$id"}
+                {/foreach}
+            </div>
+        </div>
+    </div>
+    {include addComment}
+{/block}
+
+{define addComment}
+    <div class="add-comment" n:if="$user->isLoggedIn()">
+        <div>
+            <a
+                    n:href="addComment! $discussionEntity->getId(), $user->getId()"
+                    class="button"
+                    data-ajax="false"
+            >
+                Přidat komentář
+            </a>
+        </div>
+    </div>
+{/define}

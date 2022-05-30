@@ -19,4 +19,10 @@ RUN a2enmod rewrite
 RUN apt-get -y install libpq-dev \
   && docker-php-ext-install pdo_pgsql
 
+# install additional supported languages for liveCoding appart from php
+# HTML + CSS by default of Apache
+# PHP by default by this image
+RUN apt-get -y install python3 # Python3
+RUN apt-get -y install nodejs # JavaScript
+
 WORKDIR /var/www/html

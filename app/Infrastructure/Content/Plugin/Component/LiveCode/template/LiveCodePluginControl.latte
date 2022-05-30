@@ -1,0 +1,39 @@
+{varType Domain\Content\Entity\Plugin\PluginLiveCodeEntity $entity}
+{varType string $output}
+
+{block content}
+    <div class="plugin-live-code plugin-item">
+        {include header}
+        {include body}
+        {include footer}
+    </div>
+{/block}
+
+{define header}
+    <div class="plugin-header">
+        <div class="subtitle" n:if="$entity->isShowTitle()">{$entity->getTitle()}</div>
+    </div>
+{/define}
+
+{define body}
+    <div class="plugin-body">
+        <div class="body">
+            <div class="container" n:snippet="liveCode">
+                <div class="left-column">
+                    <span>{$entity->getLanguageName()}</span>
+                    {control liveCodeForm}
+                </div>
+                <div class="right-column">
+                    <iframe n:if="!empty($output)" srcdoc="{$output}">
+
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+{/define}
+
+{define footer}
+    <div class="plugin-footer">
+    </div>
+{/define}

@@ -1,0 +1,47 @@
+{varType Domain\Course\Entity\CourseEntity $courseEntity}
+{varType Domain\Label\Entity\LabelEntity[] $labels}
+
+{block articleControl}
+    <div class="library-article">
+        <div class="content">
+            <div class="left-column">
+                <div class="title">
+                    {$courseEntity->getTitle()}
+                </div>
+                <div class="perex">
+                    {$courseEntity->getAnnotation()}
+                </div>
+                <div class="labels">
+                    {foreach $labels as $label}
+                        <span class="label">{$label->getTitle()}</span>
+                    {/foreach}
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="author">
+                    <div class="container">
+                        <img
+                                class="profilePicture"
+                                src="http://localhost/images/user-profile-{$user->isLoggedIn() && $user->getId() === $courseEntity->getAuthor()->getId() ? 'login' : 'logout'}.png"
+                        />
+                        <span class="author-name">{$courseEntity->getAuthor()->getName()}</span><br />
+                        <span class="autho-type">{$courseEntity->getAuthor()->getType()->getName()}</span>
+                    </div>
+                </div>
+                <div class="edit-link">
+                    <a class="button"
+                       href="{plink "Discussion:edit", $courseEntity->getId()}"
+                       data-ajax="false"
+                            n:if="$user->isLoggedIn() && $user->getId() === $courseEntity->getAuthor()->getId()"
+                    >Editovat</a>
+                </div>
+                <div class="view-link">
+                    <a class="button"
+                       href="{plink "Course:view", $courseEntity->getId()}"
+                       data-ajax="false"
+                    >Vstoupit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}

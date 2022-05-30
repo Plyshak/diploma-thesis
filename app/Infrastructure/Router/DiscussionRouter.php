@@ -10,6 +10,9 @@ class DiscussionRouter implements RouterServiceInterface
     {
         $router = new RouteList;
         $router->addRoute('/diskuze', 'Discussion:list');
+        $router->addRoute('/diskuze/upravit/<id \d+>', 'Discussion:edit');
+        $router->addRoute('/diskuze/tema/<id \d+>', 'Discussion:view');
+        $router->addRoute('/diskuze/tema/<discussionId \d+>/komentar/<commentId \d+>', 'Discussion:comment');
 
         return $router;
     }

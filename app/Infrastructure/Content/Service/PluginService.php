@@ -9,24 +9,22 @@ use Domain\Content\Repository\Plugin\PluginBlockRepositoryInterface;
 use Domain\Content\Repository\PluginRepositoryInterface;
 use Infrastructure\Content\Plugin\Component\PluginControlFactoryInterface;
 use Nette\DI\Container;
-use Nette\Utils\Strings;
 
 class PluginService
 {
     public const PLUGIN_MANAGER_NAME = 'database.manager.content.plugin.%s';
     public const PLUGIN_FACTORY_NAME = 'content.plugin.component.%s.factory';
 
-    /** @var PluginRepositoryInterface */
     protected $pluginManager;
 
     /** @var Container */
     protected $container;
 
     public function __construct(
-        PluginRepositoryInterface $manager,
+        PluginRepositoryInterface $pluginManager,
         Container $container
     ) {
-        $this->pluginManager = $manager;
+        $this->pluginManager = $pluginManager;
         $this->container = $container;
     }
 
@@ -61,10 +59,11 @@ class PluginService
         string $prefix,
         array $values,
         int $position
-    ) : void {
+    ) : PluginEntity
+    {
         $pluginEntity = $this->createPluginEntity($prefix, $values);
 
-        $this->createMSEntity($entity, $prefix, $pluginEntity, $position);
+        return $this->createMSEntity($entity, $prefix, $pluginEntity, $position);
     }
 
     public function updatePlugin(
@@ -97,6 +96,17 @@ class PluginService
         $success = $manager->delete($pluginBlockEntity);
 
         if ($success) {
+            /** @var PluginEntity[] $msPluginEntities */
+            $msPluginEntities = $this->pluginManager->findByContentEntity($entity->getContent());
+
+            $position = 0;
+
+            foreach ($msPluginEntities as $pluginEntity) {
+                $this->pluginManager->update($pluginEntity, ['position' => $position]);
+
+                $position++;
+            }
+
             $this->pluginManager->delete($entity);
         };
     }
@@ -116,14 +126,15 @@ class PluginService
         string $prefix,
         PluginBlockEntityInterface $pluginEntity,
         int $position
-    ) : void {
+    ) : PluginEntity
+    {
         $data = [];
         $data['content_id'] = $entity->getId();
         $data['plugin'] = $prefix;
         $data['plugin_id'] = $pluginEntity->getId();
         $data['position'] = $position;
 
-        $this->pluginManager->create($data);
+        return $this->pluginManager->create($data);
     }
 
     protected function getPlugin(PluginEntity $rawPlugin): ?PluginBlockEntityInterface
@@ -137,5 +148,26 @@ class PluginService
         );
 
         return $manager->getById($rawPlugin->getPluginId());
+    }
+
+    public function increasePluginsPosition(ContentEntity $entity, PluginEntity $pluginEntity, string $position) : bool
+    {
+        $success = true;
+
+        $plugins = $this->pluginManager->findByContentEntity($entity);
+
+        /** @var PluginEntity $plugin */
+        foreach ($plugins as $plugin) {
+            if (
+                $plugin->getPosition() >= $position
+                && $plugin->getId() !== $pluginEntity->getId()
+            ) {
+                $result = $this->pluginManager->updatePosition($plugin);
+
+                $success = $success && $result;
+            }
+        }
+
+        return $success;
     }
 }

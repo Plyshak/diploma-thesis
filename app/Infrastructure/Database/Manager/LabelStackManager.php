@@ -38,9 +38,13 @@ class LabelStackManager extends AbstractManager implements LabelStackRepositoryI
         return $this->createLabelStackEntity($activeRow->toArray());
     }
 
-    public function delete(array $conditions): bool
+    public function delete(LabelStackEntity $labelStackEntity): bool
     {
-        // TODO: Implement delete() method.
+        $rows = $this->getTable()
+            ->where(['id' => $labelStackEntity->getId()])
+            ->delete();
+
+        return $rows > 0;
     }
 
     public function findByModuleEntity(LabelInterface $contentEntity): ?LabelStackEntity

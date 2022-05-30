@@ -1,0 +1,25 @@
+{varType string|null $type}
+{varType int|null $id}
+{varType Domain\Course\Entity\ChapterEntity $chapterEntity}
+{varType Domain\Course\Entity\PageEntity $pageEntity}
+
+{block smartEdit}
+    <div class="smartEdit">
+        {if $type}
+            {include block $type}
+        {else}
+            <p>Vyberte položku k úpravě z levého navigačního menu nebo vytvořte novou položku k úpravě.</p>
+        {/if}
+    </div>
+{/block}
+
+{define chapter}
+    <h2 class="subtitle">{$chapterEntity->isRepetition() ? 'Testování' : 'Kapitola'} {$chapterEntity->getPosition()}</h2>
+    {control chapterEditForm}
+{/define}
+
+{define page}
+    <h2 class="subtitle">{$chapterEntity->isRepetition() ? 'Testování' : 'Kapitola'} {$chapterEntity->getPosition()}
+            - Strana {$pageEntity->getPosition()}</h2>
+    {control pageContent}
+{/define}

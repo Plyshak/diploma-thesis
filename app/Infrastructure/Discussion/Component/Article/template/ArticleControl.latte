@@ -1,0 +1,52 @@
+{varType Domain\Discussion\Entity\DiscussionEntity $discussionEntity}
+{varType Domain\Label\Entity\LabelEntity[] $labels}
+{varType Nette\Security\User $user}
+{varType string $perex}
+
+{block articleControl}
+    <div class="library-article">
+        <div class="content">
+            <div class="left-column">
+                <div class="title">
+                    <img class="solved" src="../images/solved.png" n:if="$discussionEntity->isSolved()" />{$discussionEntity->getTitle()}
+                    <span class="created">
+                        ({$discussionEntity->getCreatedAt()|date:'d. m. Y'})
+                    </span>
+                </div>
+                <div class="perex">
+                    {$perex|stripHtml}
+                </div>
+                <div class="labels">
+                    {foreach $labels as $label}
+                        <span class="label">{$label->getTitle()}</span>
+                    {/foreach}
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="author">
+                    <div class="container">
+                        <img
+                            class="profilePicture"
+                            src="http://localhost/images/user-profile-{$user->isLoggedIn() && $user->getId() === $discussionEntity->getAuthor()->getId() ? 'login' : 'logout'}.png"
+                        />
+                        <span class="author-name">{$discussionEntity->getAuthor()->getName()}</span><br />
+                        <span class="autho-type">{$discussionEntity->getAuthor()->getType()->getName()}</span>
+                    </div>
+                </div>
+                <div class="edit-link">
+                    <a class="button"
+                       href="{plink "Discussion:edit", $discussionEntity->getId()}"
+                       data-ajax="false"
+                            n:if="$user->isLoggedIn() && $user->getId() === $discussionEntity->getAuthor()->getId()"
+                    >Editovat</a>
+                </div>
+                <div class="view-link">
+                    <a class="button"
+                       href="{plink "Discussion:view", $discussionEntity->getId()}"
+                       data-ajax="false"
+                    >Vstoupit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}

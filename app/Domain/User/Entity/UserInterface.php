@@ -2,9 +2,10 @@
 
 namespace Domain\User\Entity;
 
+use Domain\Shared\Collection\CollectionItem;
 use Domain\User\Entity\ValueObject\UserType;
 
-interface UserInterface
+interface UserInterface extends CollectionItem
 {
     public function getId() : int;
 

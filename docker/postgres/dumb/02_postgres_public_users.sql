@@ -1,25 +1,24 @@
 create table users
 (
-    id          serial,
+    id          serial
+        primary key,
     external_id integer      not null,
     name        varchar(255) not null,
     password    varchar(255) not null,
-    type        integer      not null
-        constraint users_user_type_id_fk
-            references user_type (id)
+    type        integer
+        references user_type
 );
 
 alter table users
     owner to postgres;
 
-create unique index users_id_uindex
-    on users (id);
-
-INSERT INTO public.users
+insert into users
     (external_id, name, password, type)
-VALUES
-    (0, 'Host', '33e9232989576b5cfaa06654217d7a1a', 1),
-    (0, 'Uživatel', 'a8ac0e63c009626bf756b0dfb111b3c1', 2),
-    (0, 'Lektor', '43f76ee579f3f69ebc6ae6181d380290', 3),
-    (0, 'Administrátor', '99fedb09f0f5da90e577784e5f9fdc23', 4);
+values
+    (0, 'Tomáš Zábranský', '517100c13f9a130afe5718b4a2dcfe49', 1), -- ID: 1
+    (10000, 'Student', 'f5c0a1c9384c2e25e79ba1abf5d9a037', 1), -- ID: 2
+    (11111, 'Studentka', '7b268547ec345b87a32704fb4525f898', 1), -- ID: 3
+    (11011, 'John Doe', '4c2a904bafba06591225113ad17b5cec', 2), -- ID: 4
+    (10101, 'Jane Doe', '1c272047233576d77a9b9a1acfdf741c', 2), -- ID: 5
+    (10001, 'Administrátor', '6b272826eaa618d448a337c5af99d404', 3); -- ID: 6
 

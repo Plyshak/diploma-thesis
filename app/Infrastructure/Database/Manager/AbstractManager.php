@@ -44,7 +44,7 @@ abstract class AbstractManager
             $extension = Arrays::last(explode('.', $imageName));
             $fileName = $this->randomizeFileName();
 
-            $file = $this->resolveUplodFileName($fileName, $extension);
+            $file = $this->resolveUploadFileName($fileName, $extension);
             $fileUpload->move('/var/www/www/' . $file);
         } else {
             $file = null;
@@ -53,7 +53,7 @@ abstract class AbstractManager
         return $file;
     }
 
-    protected function resolveUplodFileName(string $fileName, string $fileExtension) : string
+    protected function resolveUploadFileName(string $fileName, string $fileExtension) : string
     {
         $name = $this->getFileUploadPath() . $fileName . '.' . $fileExtension;
 
@@ -62,7 +62,7 @@ abstract class AbstractManager
             ->fetchAll();
 
         if (count($rows) !== 0) {
-            $name = $this->resolveUplodFileName($this->randomizeFileName(), $fileExtension);
+            $name = $this->resolveUploadFileName($this->randomizeFileName(), $fileExtension);
         }
 
         return $name;
@@ -73,15 +73,17 @@ abstract class AbstractManager
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
+
         for ($i = 0; $i < 128; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
+
         return $randomString;
     }
 
     protected function getFileUploadPath() : string
     {
-        return self::UPLOAD_IMAGE_PATH;
+        return $this::UPLOAD_IMAGE_PATH;
     }
 
     private function toUnderscore(string $input) : string

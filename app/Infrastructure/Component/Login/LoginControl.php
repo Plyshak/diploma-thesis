@@ -2,12 +2,19 @@
 
 namespace Infrastructure\Component\Login;
 
+use Domain\User\Repository\UsersRepositoryInterface;
 use Infrastructure\Component\AbstractControl;
 
 class LoginControl extends AbstractControl
 {
     protected $onLogin = [];
     protected $onLogout = [];
+    protected $userManager;
+
+    public function __construct(UsersRepositoryInterface $usersManager)
+    {
+        $this->userManager = $usersManager;
+    }
 
     public function setOnLogin(array $onLogin) : void
     {
@@ -24,6 +31,7 @@ class LoginControl extends AbstractControl
         parent::addTemplateParameters();
 
         $this->template->user = $this->getPresenter()->getUser();
+        $this->template->users = $this->userManager->findAll();
     }
 
     public function handleLogin(string $type) : void

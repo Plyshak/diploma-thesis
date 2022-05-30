@@ -42,6 +42,8 @@ abstract class AbstractPresenter extends Presenter
     protected $cssFiles = [];
     protected $jsFiles = [];
 
+    abstract function getModuleName() : string;
+
     public function createComponentHeader() : HeaderControl
     {
         $control = $this->headerControlFactory->create();
@@ -54,15 +56,6 @@ abstract class AbstractPresenter extends Presenter
     public function createComponentFooter() : FooterControl
     {
         return $this->footerControlFactory->create();
-    }
-
-    public function flashMessage($message, string $type = 'info') : stdClass
-    {
-        $this->redrawControl('login');
-        $this->redrawControl('editLibraryArticle');
-        $this->redrawControl('libraryArticleList');
-
-        return parent::flashMessage($message, $type);
     }
 
     /**
@@ -79,12 +72,15 @@ abstract class AbstractPresenter extends Presenter
         $this->addFileByExtension('footer.css');
         $this->addFileByExtension('labels.css');
         $this->addFileByExtension('library.css');
-        $this->addFileByExtension('flashMessage.css');
+        $this->addFileByExtension('discussion.css');
+        $this->addFileByExtension('course.css');
         $this->addFileByExtension('nittro-min.css');
+        $this->addFileByExtension('prism-min.css');
         $this->addFileByExtension('nittro-min.js');
-        $this->addFileByExtension('flashMessage.js');
 
         $this->appendFiles();
+
+        $this->template->moduleName = $this->getModuleName();
     }
 
     protected function appendFiles() : void
@@ -142,15 +138,9 @@ abstract class AbstractPresenter extends Presenter
             function (string $username, string $password) use ($user) {
                 try {
                     $user->login($username, $password);
-                    $this->flashMessage(
-                        sprintf(AuthenticatorService::LOGIN_SUCCESS_MESSAGE, $username),
-                        self::FLASH_MESSAGE_SUCCESS
-                    );
+                    $this->redrawControl('pageContent');
                 } catch (UserNotFoundException $e) {
-                    $this->flashMessage(
-                        AuthenticatorService::LOGIN_ERROR_MESSAGE,
-                        self::FLASH_MESSAGE_ERROR
-                    );
+                    $this->redrawControl('pageContent');
                 }
             },
         ];
@@ -165,10 +155,7 @@ abstract class AbstractPresenter extends Presenter
 
         return [
             function () use ($user) {
-                $this->flashMessage(
-                    sprintf(AuthenticatorService::LOGOUT_SUCCESS_MESSAGE, $user->getIdentity()->getName()),
-                    self::FLASH_MESSAGE_SUCCESS
-                );
+                $this->redrawControl('pageContent');
                 $user->logout(true);
             },
         ];

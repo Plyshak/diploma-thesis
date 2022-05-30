@@ -84,7 +84,9 @@ class AddPluginControl extends AbstractControl
             foreach ($this->pluginFactories as $factory) {
                 $control = $factory->create();
 
-                $this->allowedPlugins[$control->getPluginPrefix()] = $control->getPluginName();
+                if ($control->isAvailable($this->entity)) {
+                    $this->allowedPlugins[$control->getPluginPrefix()] = $control->getPluginName();
+                }
             }
         }
 
@@ -95,17 +97,17 @@ class AddPluginControl extends AbstractControl
     {
         $control = $this->pluginFormFactoryService->createPluginForm($this->addPluginFactory);
         $control->onSuccess[] = function (Form $form) {
-            $this->service->createPlugin(
+            $pluginEntity = $this->service->createPlugin(
                 $this->entity,
                 $this->addPluginFactory,
-                $form->getValues('array'),
+                $form->getvalues('array'),
                 $this->position
             );
 
             $this->addPluginFactory = null;
             $this->redrawControl();
 
-            $this->onAfterPluginAdded();
+            $this->onAfterPluginAdded($pluginEntity);
         };
 
         return $control;

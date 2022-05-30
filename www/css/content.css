@@ -1,5 +1,7 @@
 /* Content Builder */
-div.content-builder div.list::after {
+div.content-builder div.list::after,
+div.content-builder div.plugin-list div.single-plugin div.plugin::after,
+div.content-builder div.plugin-item::after {
     content: "";
     clear: both;
     display: table;
@@ -16,12 +18,6 @@ div.content-builder div.plugin-list div.single-plugin {
     padding: 10px;
 }
 
-div.content-builder div.plugin-list div.single-plugin div.plugin::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
 div.content-builder div.single-plugin div.delete {
     float: right;
     width: 10%;
@@ -36,4 +32,56 @@ div.plugin-life-view {
     margin: 25px;
 }
 
+/* Plugin - Live Code */
+div.plugin-live-code div.plugin-body div.body div.container {
+    display: block;
+    width: 100%;
+}
 
+div.plugin-live-code div.plugin-body div.body div.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+div.plugin-live-code div.plugin-body div.body div.container div.left-column {
+    float: left;
+    width: 45%;
+    display: block;
+}
+
+div.plugin-live-code div.plugin-body div.body div.container div.left-column form,
+div.plugin-live-code div.plugin-body div.body div.container div.left-column form table,
+div.plugin-live-code div.plugin-body div.body div.container div.left-column form table tr,
+div.plugin-live-code div.plugin-body div.body div.container div.left-column form table tr td {
+    width: 100%;
+}
+
+div.plugin-live-code div.plugin-body div.body div.container div.right-column {
+    float: right;
+    width: 45%;
+    display: block;
+}
+
+div.plugin-live-code div.plugin-body div.body div.container div.right-column iframe {
+    width: 100%;
+    display: block;
+}
+
+/* Plugin - Code Block*/
+div.plugin-code-block div.code-language {
+    display: block;
+    width: 100%;
+    background: rgb(245, 242, 240);
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 15px 0 0 0;
+}
+
+div.plugin-code-block div.code-language span {
+    padding: 0 0 0 25px;
+}
+
+div.plugin-code-block div.plugin-body > div > div.code-toolbar > pre {
+    margin-top: 0;
+}

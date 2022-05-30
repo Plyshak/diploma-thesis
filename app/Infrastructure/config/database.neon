@@ -1,12 +1,26 @@
 services:
+    database.manager.topic.topicManager: Infrastructure\Database\Manager\TopicManager
+    database.manager.discussion.commentManager: Infrastructure\Database\Manager\CommentManager
+    database.manager.discussion.discussionManager: Infrastructure\Database\Manager\DiscussionManager
+    database.manager.rating.ratingManager: Infrastructure\Database\Manager\RatingManager
+    database.manager.course.courseManager: Infrastructure\Database\Manager\CourseManager
+    database.manager.course.chapterManager: Infrastructure\Database\Manager\ChapterManager
+    database.manager.course.pageManager: Infrastructure\Database\Manager\PageManager
     database.manager.library.libraryManager: Infrastructure\Database\Manager\LibraryManager
     database.manager.label.labelBridgeManager: Infrastructure\Database\Manager\LabelBridgeManager
     database.manager.label.labelStackManager: Infrastructure\Database\Manager\LabelStackManager
     database.manager.label.labelManager: Infrastructure\Database\Manager\LabelManager
+    database.manager.content.plugin.liveCode: Infrastructure\Database\Manager\PluginLiveCodeManager
+    database.manager.content.plugin.codeBlock: Infrastructure\Database\Manager\PluginCodeBlockManager
+    database.manager.content.plugin.testForm: Infrastructure\Database\Manager\PluginTestFormManager
     database.manager.content.plugin.textBlock: Infrastructure\Database\Manager\PluginTextBlockManager
     database.manager.content.plugin.pictureBlock: Infrastructure\Database\Manager\PluginPictureBlockManager
     database.manager.content.contentManager: Infrastructure\Database\Manager\ContentManager
     database.manager.content.pluginManager: Infrastructure\Database\Manager\PluginManager
     database.manager.user.usersManager: Infrastructure\Database\Manager\UsersManager
     database.manager.user.userTypeManager: Infrastructure\Database\Manager\UserTypeManager
-    database.service.database: Infrastructure\Database\Service\Database
+
+    database.manager.liveCode.liveCodeManager:
+        class: Infrastructure\Database\Manager\LiveCode\LiveCodeManager
+        arguments:
+            - @database.liveCode.context

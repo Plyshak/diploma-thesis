@@ -78,4 +78,38 @@ class Collection implements Iterator, Countable
     {
         return count($this->items);
     }
+
+    public function first() : ?CollectionItem
+    {
+        $item = null;
+
+        if ($this->count() > 0) {
+            $this->position = 0;
+            $item = $this->items[$this->position];
+        }
+
+        return $item;
+    }
+
+    public function last() : ?CollectionItem
+    {
+        $item = null;
+
+        if ($this->count() > 0) {
+            $this->position = $this->count() - 1;
+            $item = $this->items[$this->position];
+        }
+
+        return $item;
+    }
+
+    public function isFirst(CollectionItem $collectionItem) : bool
+    {
+        return $collectionItem->equals($this->first());
+    }
+
+    public function isLast(CollectionItem $collectionItem) : bool
+    {
+        return $collectionItem->equals($this->last());
+    }
 }

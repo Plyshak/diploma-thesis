@@ -22,7 +22,13 @@ class LabelManager extends AbstractManager implements LabelRepositoryInterface
 
     public function update(LabelEntity $labelEntity, array $values): bool
     {
-        // TODO: Implement update() method.
+        $values['updated_at'] = 'now()';
+
+        $rows = $this->getTable()
+            ->where(['id' => $labelEntity->getId()])
+            ->update($values);
+
+        return $rows > 0;
     }
 
     public function getById(int $id): LabelEntity
@@ -40,7 +46,11 @@ class LabelManager extends AbstractManager implements LabelRepositoryInterface
 
     public function delete(LabelEntity $labelEntity): bool
     {
-        // TODO: Implement delete() method.
+        $rows = $this->getTable()
+            ->where(['id' => $labelEntity->getId()])
+            ->delete();
+
+        return $rows > 0;
     }
 
     public function findAll(): Collection

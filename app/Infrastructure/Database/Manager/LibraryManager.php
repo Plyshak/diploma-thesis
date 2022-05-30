@@ -8,6 +8,7 @@ use Domain\Library\Repository\LibraryRepositoryInterface;
 use Domain\Shared\Collection\Collection;
 use Domain\User\Repository\UsersRepositoryInterface;
 use Nette\Database\Explorer;
+use Nette\Http\FileUpload;
 use Nette\Utils\Arrays;
 
 class LibraryManager extends AbstractManager implements LibraryRepositoryInterface
@@ -155,7 +156,12 @@ class LibraryManager extends AbstractManager implements LibraryRepositoryInterfa
             'updated_at' => 'now()',
         ];
 
-        $data['image'] = $this->uploadFile($data['image']);
+        /** @var FileUpload $fileUpload */
+        $fileUpload = $values['image'] ?? null;
+
+        if ($fileUpload && $fileUpload->hasFile()) {
+            $data['image'] = $this->uploadFile($fileUpload);
+        }
 
         $selection = $this->getTable();
         $selection->where(['id' => $id]);

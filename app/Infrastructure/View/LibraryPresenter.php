@@ -36,6 +36,11 @@ class LibraryPresenter extends AbstractPresenter
     /** @var LibraryEntity|null */
     protected $libraryEntity;
 
+    public function getModuleName(): string
+    {
+        return 'library';
+    }
+
     protected function beforeRender(): void
     {
         parent::beforeRender();
@@ -55,16 +60,12 @@ class LibraryPresenter extends AbstractPresenter
 
     public function actionEdit(int $id) : void
     {
-        $libraryEntity = $this->libraryManager->getById($id);
-
-        $this->libraryEntity = $libraryEntity;
+        $this->libraryEntity = $this->libraryManager->getById($id);
     }
 
     public function actionView(int $id) : void
     {
-        $libraryEntity = $this->libraryManager->getById($id);
-
-        $this->libraryEntity = $libraryEntity;
+        $this->libraryEntity = $this->libraryManager->getById($id);
     }
 
     public function createComponentList() : ListControl
@@ -83,15 +84,15 @@ class LibraryPresenter extends AbstractPresenter
         $form->addTextArea('perex', 'Krátký popis článku')
             ->setHtmlAttribute('class', 'smart-text')
             ->setDefaultValue($this->libraryEntity ? $this->libraryEntity->getPerex() : '');
-        $form->addUpload('image', 'Obrázek');
+        $uploadControl = $form->addUpload('image', 'Obrázek');
         $form->addSubmit('submit', 'Uložit');
 
+        if ($this->libraryEntity) {
+            $uploadControl->setOption('description', 'Obrázek je vložen');
+        }
+
         $form->onSuccess[] = function (Form $form, array $values) {
-            if ($this->libraryManager->update($this->libraryEntity, $values)) {
-                $this->flashMessage('Článek byl úspěšně aktualizován.', self::FLASH_MESSAGE_SUCCESS);
-            } else {
-                $this->flashMessage('Chyba při aktualizaci článku.', self::FLASH_MESSAGE_ERROR);
-            }
+            $this->libraryManager->update($this->libraryEntity, $values);
 
             $this->reloadEntity();
             $this->redrawControl('editLibraryArticle');
@@ -211,7 +212,7 @@ class LibraryPresenter extends AbstractPresenter
     {
         $labels = [];
 
-        $collection = $this->labelService->getEntityLabels($this->libraryEntity);
+        $collection = $this->getLabelsFromEntity();
 
         /** @var LabelEntity $item */
         foreach ($collection as $item) {

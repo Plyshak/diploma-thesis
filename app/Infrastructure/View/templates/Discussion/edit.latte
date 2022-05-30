@@ -1,0 +1,50 @@
+{varType Domain\Discussion\Entity\DiscussionEntity $discussionEntity}
+
+{block content}
+    <div class="right-button-container">
+        <div>
+            <a class="button" data-type="secondary"
+                    n:href="Discussion:list" data-ajax="false">Zpět na výpis</a>
+        </div>
+        <div>
+            <a class="button" data-type="secondary"
+                    n:href="Discussion:view $discussionEntity->getId()" data-ajax="false">Zobrazit téma</a>
+        </div>
+    </div>
+    <div n:snippet="editLibraryArticle">
+        {if $discussionEntity->getAuthor()->getId() === $user->getId()}
+            {include withPermission}
+        {else}
+            {include withoutPermission}
+        {/if}
+    </div>
+{/block}
+
+{define withPermission}
+    <div class="edit-article">
+        <div class="intro">
+            <h1 class="title">
+                Upravit téma
+                <span class="article-name"> - "{$discussionEntity->getTitle()}"</span>
+            </h1>
+        </div>
+        <div class="information">
+            {control editArticleForm}
+        </div>
+        <div class="labels">
+            {control editArticleLabelsForm}
+        </div>
+        <div class="add-label">
+            {control addArticleLabelForm}
+        </div>
+        <div class="content">
+            {control editContent}
+        </div>
+    </div>
+{/define}
+
+{define withoutPermission}
+    <div class="no-permission">
+        Nemáte oprávnění upravovat článek - "{$discussionEntity->getTitle()}"!
+    </div>
+{/define}

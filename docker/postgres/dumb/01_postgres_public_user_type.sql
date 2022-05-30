@@ -1,6 +1,7 @@
 create table user_type
 (
-    id          serial,
+    id          serial
+        primary key,
     name        varchar(255) not null,
     code        varchar(255) not null,
     permissions integer default 0
@@ -9,13 +10,9 @@ create table user_type
 alter table user_type
     owner to postgres;
 
-create unique index user_type_id_uindex
-    on user_type (id);
-
-INSERT INTO public.user_type
+insert into user_type
     (name, code, permissions)
-VALUES
-    ('Host', 'GUEST', 0),
+values
     ('Uživatel', 'USER', 1),
     ('Lektor', 'LECTOR', 2),
     ('Administrátor', 'ADMINISTRATOR', 3);

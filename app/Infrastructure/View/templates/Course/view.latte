@@ -1,0 +1,78 @@
+{varType Domain\Course\Entity\CourseEntity $courseEntity}
+
+{block content}
+    <div n:snippet="editLibraryArticle">
+        {if ($courseEntity->isPublic() && $courseEntity->isVisibility())
+            || (!$courseEntity->isPublic() && $user->isLoggedIn() && $courseEntity->isVisibility())
+            || $courseEntity->getAuthor()->getId() === $user->getId()
+        }
+            {include withPermission}
+        {else}
+            {include withoutPermission}
+        {/if}
+    </div>
+{/block}
+
+{define withPermission}
+    <div class="right-button-container">
+        <div n:if="$user->getId() === $courseEntity->getAuthor()->getId()">
+            <a class="button" data-type="secondary"
+                    n:href="Course:edit, $courseEntity->getId()" data-ajax="false">Upravit</a>
+        </div>
+    </div>
+    <div class="article">
+        <div class="intro">
+            <div class="left-column">
+                <div>
+                    <div class="headline">
+                        <h1 class="title">
+                            {$courseEntity->getTitle()}
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            {var $chapters = $courseEntity->getChapters()}
+            {varType Domain\Course\Entity\ChapterEntity[] $chapters}
+
+            {foreach $chapters as $chapter}
+                <div class="chapter">
+                    <div class="title">
+                        {if $chapter->isRepetition()}
+                            Testování {$chapter->getPosition()}
+                        {else}
+                            Kapitola {$chapter->getPosition()}
+                        {/if}
+                    </div>
+                    <div class="annotation">
+                        {$chapter->getAnnotation()}
+                    </div>
+                </div>
+            {/foreach}
+        </div>
+        <div class="buttons">
+            <div class="left-column">
+                <a class="button" data-type="secondary"
+                    n:href="Course:list" data-ajax="false">Odejít</a>
+            </div>
+            <div class="right-column">
+                {var $firstChapter = $courseEntity->getChapters()->first()}
+                {varType Domain\Course\Entity\ChapterEntity $firstChapter}
+
+                {var $firstPage = $firstChapter ?->getPages()->first()}
+                {varType Domain\Course\Entity\PageEntity $firstPage}
+
+                <a class="button" n:if="$firstChapter && $firstPage"
+                    n:href="Course:page, $courseEntity->getId(), $firstChapter->getPosition(), $firstPage->getPosition()"
+                    data-ajax="false">Začít</a>
+            </div>
+        </div>
+    </div>
+{/define}
+
+{define withoutPermission}
+    <div class="no-permission">
+        Nemáte oprávnění vidět kurz - "{$courseEntity->getTitle()}"!
+    </div>
+{/define}

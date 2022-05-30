@@ -1,0 +1,7 @@
+services:
+    discussion.component.comment.commentControl:
+        implement: Infrastructure\Discussion\Component\Comment\CommentControlFactory
+    discussion.component.list.listControl:
+        implement: Infrastructure\Discussion\Component\List\ListControlFactory
+    discussion.component.article.articleControl:
+        implement: Infrastructure\Discussion\Component\Article\ArticleControlFactory

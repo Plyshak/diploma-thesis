@@ -49,4 +49,24 @@ class UserIdentity implements IIdentity, UserInterface
     {
         return $this->type;
     }
+
+    public function equals(object $item): bool
+    {
+        return $this->getClass() === $item->getClass()
+            && $this->getId() === $item->getId()
+            && $this->getExternalId() === $item->getExternalId()
+            && $this->getRoles() === $item->getRoles()
+            && $this->getName() === $item->getName()
+            && $this->getType() === $item->getType();
+    }
+
+    public function getClass(): string
+    {
+        return get_class($this);
+    }
+
+    public function getData() : array
+    {
+        return [];
+    }
 }

@@ -1,5 +1,6 @@
 {varType array $cssFiles}
 {varType array $jsFiles}
+{varType string $moduleName}
 
 <!DOCTYPE html>
 <html>
@@ -15,25 +16,20 @@
 </head>
 
 <body>
-	<div n:snippetArea="page">
-		<div class="flashMessageContainer" n:snippet="flashMessageContainer">
-			<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">
-				<div class="message">
-					{$flash->message}
-				</div>
-			</div>
-		</div>
-
+	<div class="module-{$moduleName}">
 		{control header}
 
 		<div id="page" class="page">
-			{include content}
+			<div n:snippet="pageContent">
+				{include content}
+			</div>
 		</div>
 
 		{control footer}
 
 		{block scripts}
 			<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
+			<script src="http://localhost/js/prism-min.js"></script>
 		{/block}
 	</div>
 </body>

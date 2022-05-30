@@ -3,9 +3,13 @@
 namespace Infrastructure\Content\Service;
 
 use Domain\Content\Entity\Plugin\PluginBlockEntityInterface;
+use Domain\Content\Entity\Plugin\PluginCodeBlockEntity;
+use Domain\Content\Entity\Plugin\PluginLiveCodeEntity;
 use Domain\Content\Entity\Plugin\PluginPictureBlockEntity;
+use Domain\Content\Entity\Plugin\PluginTestFormEntity;
 use Domain\Content\Entity\Plugin\PluginTextBlockEntity;
 use Nette\Application\UI\Form;
+use Nette\Utils\Html;
 use Nette\Utils\Strings;
 
 class PluginFormFactoryService
@@ -77,7 +81,7 @@ class PluginFormFactoryService
         $form = $this->getBasicBlockForm();
 
         //specific
-        $form->addUpload('image', 'Obrázek');
+        $uploadControl = $form->addUpload('image', 'Obrázek');
 
         $form->addSelect(
             'picture_align',
@@ -112,6 +116,138 @@ class PluginFormFactoryService
                 'picture_description' => $entity->getPictureDescription(),
                 'picture_show_description' => $entity->isPictureShowDescription(),
                 'picture_width' => $entity->getPictureWidth(),
+            ]);
+
+            $uploadControl->setOption('description', 'Obrázek je vložen');
+        }
+
+        $form->addSubmit('submit', $this->getSubmitLabel($entity));
+
+        return $form;
+    }
+
+    public function getTestFormForm(?PluginTestFormEntity $entity = null) : Form
+    {
+        $form = $this->getBasicBlockForm();
+
+        $code = Html::el('div')
+            ->setText('{
+    "0": {
+        "question": "Vyberte 1 spravnou odpoved:",
+        "type": "single",
+        "answers": {
+            "0" : {
+                "answer": "Toto je spatna odpoved",
+                "points" : "0"
+            },
+            "1" : {
+                "answer": "Toto je spravna odpoved",
+                "points": "1"
+            }
+        }
+    },
+    "1": {
+        "question": "Vyberte vice spravnych odpovedi:",
+        "type": "multi",
+        "answers": {
+            "0": {
+                "answer": "Toto je spatna odpoved",
+                "points" : "0"
+            },
+            "1": {
+                "answer": "Toto je spravna odpoved",
+                "points": "1"
+            },
+            "2": {
+                "answer": "Toto je spatna odpoved",
+                "points" : "0"
+            },
+            "3": {
+                "answer": "Toto je spravna odpoved",
+                "points": "1"
+            }
+        }
+    }
+}');
+
+        $description = Html::el('div')
+            ->addHtml(
+                Html::el('div')
+                    ->setText('Formulář je potřeba vkládat pomocí JSON syntaxe:')
+            )
+            ->addHtml(
+                Html::el('pre')
+                    ->addAttributes(['class' => 'json'])
+                    ->setHtml($code)
+            );
+
+        $popup = Html::el('div')
+            ->addHtml(
+                Html::el('div')
+                    ->setAttribute('class', 'form-description')
+                    ->setText('Nápověda')
+                    ->setAttribute('onclick', '$("#popup").toggleClass("hidden");')
+            )
+            ->addHtml(
+                Html::el('div')
+                    ->setAttribute('id', 'popup')
+                    ->setAttribute('class', 'popup hidden')
+                    ->setHtml($description)
+            );
+
+        $form->addTextArea('configuration', 'Testovací formulář')
+            ->setHtmlAttribute('id', 'testFormWrapper')
+            ->setOption('description', $popup);
+
+        if ($entity) {
+            $form->setDefaults([
+                'title' => $entity->getTitle(),
+                'show_title' => $entity->isShowTitle(),
+                'configuration' => $entity->getConfiguration(),
+            ]);
+        }
+
+        $form->addSubmit('submit', $this->getSubmitLabel($entity));
+
+        return $form;
+    }
+
+    public function getCodeBlockForm(?PluginCodeBlockEntity $entity = null) : Form
+    {
+        $form = $this->getBasicBlockForm();
+
+        $form->addTextArea('code', 'Snippet kódu')
+            ->setHtmlAttribute('class', 'smart-text');
+
+        $form->addSelect('language', 'Jazyk', PluginCodeBlockEntity::SUPPORTED_CODE_LANGUAGES)
+            ->setHtmlAttribute('class', 'smart-select');
+
+        if ($entity) {
+            $form->setDefaults([
+                'title' => $entity->getTitle(),
+                'show_title' => $entity->isShowTitle(),
+                'code' => $entity->getCode(),
+                'language' => $entity->getLanguage(),
+            ]);
+        }
+
+        $form->addSubmit('submit', $this->getSubmitLabel($entity));
+
+        return $form;
+    }
+
+    public function getLiveCodeForm(?PluginLiveCodeEntity $entity = null) : Form
+    {
+        $form = $this->getBasicBlockForm();
+
+        $form->addSelect('language', 'Jazyk', PluginLiveCodeEntity::SUPPORTED_LANGUAGES)
+            ->setHtmlAttribute('class', 'smart-select');
+
+        if ($entity) {
+            $form->setDefaults([
+                'title' => $entity->getTitle(),
+                'show_title' => $entity->isShowTitle(),
+                'language' => $entity->getLanguage(),
             ]);
         }
 

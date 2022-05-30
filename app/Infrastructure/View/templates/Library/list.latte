@@ -2,7 +2,7 @@
 {varType string $libraryArticleCountText}
 
 {block content}
-    <div class="library">
+    <div class="library"  n:snippet="libraryArticleList">
         <div class="intro">
             <div class="left-column">
                 <h1 class="title">
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="library-list" n:snippet="libraryArticleList">
+        <div class="library-list">
             {control list}
         </div>
     </div>

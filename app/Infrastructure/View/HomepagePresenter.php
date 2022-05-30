@@ -4,5 +4,8 @@ namespace Infrastructure\View;
 
 class HomepagePresenter extends AbstractPresenter
 {
-
+    public function getModuleName(): string
+    {
+        return 'homepage';
+    }
 }

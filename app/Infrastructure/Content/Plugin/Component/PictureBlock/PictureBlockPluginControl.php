@@ -2,6 +2,7 @@
 
 namespace Infrastructure\Content\Plugin\Component\PictureBlock;
 
+use Domain\Content\Entity\ContentEntity;
 use Domain\Content\Plugin\PluginInterface;
 use Infrastructure\Content\Plugin\Component\AbstractPluginControl;
 
@@ -15,5 +16,10 @@ class PictureBlockPluginControl extends AbstractPluginControl implements PluginI
     public function getPluginName(): string
     {
         return 'Obrázkový blok';
+    }
+
+    public function isAvailable(ContentEntity $contentEntity): bool
+    {
+        return true;
     }
 }

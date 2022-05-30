@@ -1,0 +1,26 @@
+{varType int $currentRating}
+{varType string $userVote}
+
+{block ratingControl}
+    <div class="rating" n:snippet='rating'>
+        <div n:class="current-rating, $currentRating > 0 ? positive, $currentRating < 0 ? negative">
+            <span class="number">
+                {$currentRating}
+            </span>
+        </div>
+        <div class="rate-user-{$userVote}">
+            <div n:class="rate-positive">
+                <a class="rate-positive"
+                        n:href="rate! 1"
+                n:if="$user->isLoggedIn()"
+                ></a>
+            </div>
+            <div n:class="rate-negative">
+                <a class="rate-positive"
+                        n:href="rate! -1"
+                n:if="$user->isLoggedIn()"
+                ></a>
+            </div>
+        </div>
+    </div>
+{/block}

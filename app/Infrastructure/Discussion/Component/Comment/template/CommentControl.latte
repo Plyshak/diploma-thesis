@@ -1,0 +1,40 @@
+{varType Domain\Discussion\Entity\CommentEntity $commentEntity}
+
+{block commentControl}
+    <div class="library-article">
+        <div class="rating">
+            {control rating}
+        </div>
+        <div class="plugins">
+            {control content}
+        </div>
+        <div class="information">
+            <div class="author">
+                <div class="container">
+                    <div class="image">
+                        <img
+                                class="profilePicture"
+                                src="http://localhost/images/user-profile-{$user->isLoggedIn() && $user->getId() === $commentEntity->getAuthor()->getId() ? 'login' : 'logout'}.png"
+                                alt="{$commentEntity->getAuthor()->getName()}"
+                        />
+                    </div>
+                    <div class="information">
+                        <span class="name">
+                            {$commentEntity->getAuthor()->getName()}
+                        </span>
+                        <span class="type">
+                            {$commentEntity->getAuthor()->getType()->getName()}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-link">
+                <a class="button"
+                    href="{plink "Discussion:comment", $commentEntity->getDiscussionId(), $commentEntity->getId()}"
+                    data-ajax="false"
+                        n:if="$user->isLoggedIn() && $user->getId() === $commentEntity->getAuthor()->getId()"
+                >Editovat</a>
+            </div>
+        </div>
+    </div>
+{/block}

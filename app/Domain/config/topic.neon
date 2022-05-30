@@ -1,0 +1,2 @@
+services:
+    topic.service.topicService: Domain\Topic\Service\TopicService

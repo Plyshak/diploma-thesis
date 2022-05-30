@@ -1,0 +1,36 @@
+{varType Domain\Content\Entity\Plugin\PluginTestFormEntity $entity}
+{varType bool $validate}
+
+{block content}
+    <div class="plugin-test-form plugin-item">
+        {include header}
+        {include body}
+        {include footer}
+    </div>
+{/block}
+
+{define header}
+    <div class="plugin-header">
+        <div class="subtitle" n:if="$entity->isShowTitle()">{$entity->getTitle()}</div>
+    </div>
+{/define}
+
+{define body}
+    <div class="plugin-test-form plugin-item">
+        <div class="columns" n:snippet="testForm">
+            <div class="left-column">
+                {control form}
+            </div>
+            <div class="right-column">
+                {if $validate}
+                    {control validatedForm}
+                {/if}
+            </div>
+        </div>
+    </div>
+{/define}
+
+{define footer}
+    <div class="plugin-footer">
+    </div>
+{/define}

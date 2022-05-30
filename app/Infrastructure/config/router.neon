@@ -1,4 +1,6 @@
 services:
+    router.service.teapot: Infrastructure\Router\TeapotRouter
+    router.service.error: Infrastructure\Router\ErrorRouter
     router.service.homepage: Infrastructure\Router\HomepageRouter
     router.service.course: Infrastructure\Router\CourseRouter
     router.service.library: Infrastructure\Router\LibraryRouter

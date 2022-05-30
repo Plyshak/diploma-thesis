@@ -1,8 +1,10 @@
 parameters:
 
 application:
-	mapping:
-		*: Infrastructure\View\*Presenter
+    catchExceptions: true
+    errorPresenter: Error
+    mapping:
+        *: Infrastructure\View\*Presenter
 
 session:
 	expiration: 14 days
@@ -13,7 +15,11 @@ di:
 		tags: no
 
 database:
-	dsn: 'pgsql:host=postgresql-db;port=5432;dbname=postgres'
-	user: postgres
-	password: diploma-thesis
-
+    default:
+        dsn: 'pgsql:host=postgresql-db;port=5432;dbname=postgres'
+        user: postgres
+        password: diploma-thesis
+    liveCode:
+        dsn: 'pgsql:host=postgresql-db-live-code;port=5432;dbname=postgres'
+        user: postgres
+        password: diploma-thesis

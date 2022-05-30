@@ -43,7 +43,7 @@
                     <div class="image">
                         <img
                             class="profilePicture"
-                            src="http://localhost/images/userProfile.png"
+                            src="http://localhost/images/user-profile-{$user->isLoggedIn() && $user->getId() === $libraryEntity->getAuthor()->getId() ? 'login' : 'logout'}.png"
                             alt="{$libraryEntity->getAuthor()->getName()}"
                         />
                     </div>
