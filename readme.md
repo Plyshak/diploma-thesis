@@ -24,4 +24,14 @@ Steps to setup project:
 Success instalation of Git and Docker can be confirmed in terminal:
 1. Git - Write `git --version`
 2. Docker - Write `docker --version`
+
 Both commands either show installed version or error, that command is not recognised.
+Examples of success:
+
+``
+PS C:\Users\User> docker --version
+Docker version 20.10.14, build a224086
+
+PS C:\Users\User> git --version
+git version 2.36.1.windows.1
+``
