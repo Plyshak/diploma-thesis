@@ -12,8 +12,7 @@ Steps to setup project:
     2. Windows - download and install package from https://docs.docker.com/desktop/windows/install/
        1. Opt-out installation option "Use WSL2 instead of HyperV" - If this is marked, it will be necessary to manualy install all dependencies into Docker
        2. In case after installation prompt is showed with text "Installation of WSL2 is incomplete" -> it is adviced to uninstall Docker and install it again without the WSL2 feature
-       3. After successfull installation, if Docker keeps starting and stopping, right click on Docker icon in right startup panel and select `Switch to Windows Containers...` -> Click `Switch` in prompt menu. After that the Docker should start up
-       4. After that right click on Docker icon in right startup panel and select `Settings` -> Select `Docker Engine` and inside configuration rewrite `false` to `true`, then submit `Apply & Restart`
+       3. After successfull installation, if Docker keeps starting and stopping, right click on Docker icon in right startup panel and select `Switch to Windows Containers...` -> Click `Switch` in prompt menu. After that the Docker should start up, then switch back to Linux containers via same instructions
 3. Clone git repository into PC
     1. Open Terminal
         1. Linux - terminal
