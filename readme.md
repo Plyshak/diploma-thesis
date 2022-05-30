@@ -20,7 +20,7 @@ Steps to setup project:
     2. Write `git clone https://github.com/Plyshak/diploma-thesis.git thesis`
     3. Write `cd thesis`
     4. Run initialization script
-        1. Linux - `./init.sh`
+        1. Linux - `. ./init.sh`
         2. Windows - `./init-win.sh`
     5. Open `http://localhost` in browser
 
