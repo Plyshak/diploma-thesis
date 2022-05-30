@@ -1,7 +1,7 @@
 echo 'Initializing project ...'
 
 echo 'Starting web services ...'
-docker-compose up -d
+docker-compose up -d --build --force-recreate
 echo 'Done.'
 
 echo 'Installing dependencies ...'
