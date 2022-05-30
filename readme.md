@@ -1,6 +1,8 @@
 English: Diploma thesis
 =================
 
+Warrning - For Windows, this manual covers only Windows PRO version. For Windows HOME edition is needed to install virtual host with linux subszstem, which is very time consuming and not easily done.
+
 Steps to setup project:
 -----------------
 
@@ -41,6 +43,8 @@ git version 2.36.1.windows.1
 
 Česky: Diplomová práce
 =================
+
+Varování - Program Docker nejde správně nastavit pro OS Windows HOME edition. Je potřeba mít Windows PRO edici. Případné nastavení HOME verze by bylo velmi časově náročné a problematické.
 
 Kroky pro spuštění webového prostředí:
 -----------------
