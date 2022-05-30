@@ -11,6 +11,6 @@ echo 'Done.'
 echo 'Web service ready and running.'
 echo 'All done.'
 
-echo 'Visit <a href="http://localhost">http://localhost</a> to open project.'
+echo 'Visit http://localhost to see project.'
 
 pause

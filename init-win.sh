@@ -1,7 +1,7 @@
 echo 'Initializing project ...'
 
 echo 'Starting web services ...'
-#docker-compose up -d --build --force-recreate
+docker-compose up -d --build --force-recreate
 echo 'Done.'
 
 echo 'Installing dependencies ...'
@@ -11,6 +11,6 @@ echo 'Done.'
 echo 'Web service ready and running.'
 echo 'All done.'
 
-echo 'Visit <a href="http://localhost">http://localhost</a> to open project.'
+echo 'Visit http://localhost to see project.'
 
 cmd /k
