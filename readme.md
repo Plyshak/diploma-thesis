@@ -10,6 +10,8 @@ Steps to setup project:
 2. Install Docker & Docker-compose
     1. Linux - installation based on distribution https://docs.docker.com/engine/install/, see "Installation per distro" left menu
     2. Windows - download and install package from https://docs.docker.com/desktop/windows/install/
+       1. Opt-out installation option "Use WSL2 instead of HzperV" - If this is marked, it will be necessary to manualy install all dependencies into Docker
+       2. In case after installation propt is showed with text "Installation of WSL2 is incomplete" -: it is adviced to uninstall Docker and install it again without the WSL2 feature
 3. Clone git repository into PC
     1. Open Terminal
         1. Linux - terminal
