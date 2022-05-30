@@ -1,4 +1,4 @@
-Diploma thesis
+English: Diploma thesis
 =================
 
 Steps to setup project:
@@ -38,3 +38,45 @@ Docker version 20.10.14, build a224086
 PS C:\Users\User> git --version
 git version 2.36.1.windows.1
 ```
+
+Česky: Diplomová práce
+=================
+
+Kroky pro spuštění webového prostředí:
+-----------------
+
+1. Instalace programu Git
+    1. Linux - instalace podle distribuce z https://git-scm.com/download/linux
+    2. Windows - stáhnout a nainstalovat balíček z https://gitforwindows.org/ 
+2. Instalace programu Docker & Docker-compose
+    1. Linux - instalace podle distribuce z https://docs.docker.com/engine/install/, v levém menu "Installation per distro" vybrat distribuci
+    2. Windows - stáhnout a nainstalovat balíček z https://docs.docker.com/desktop/windows/install/
+       1. Při instalaci je potřeba odškrknout možnost "Use WSL2 instead of HyperV" - Pokud by tato možnost byla zaškrknutá, bylo by potřeba pro úspěšné spuštění webové aplikace manuálně doinstalovat spoustu závislostí pro program Docker.
+       2. V případě, že se nainstaluje program Docker s WSL2, objeví se hláška "Installation of WSL2 is incomplete" -> doporučuji v ten okamžik odinstalovat celý program a nainstalovat ho znovu bez WSL2
+       3. Po úspěšné instalaci, pokud by program Docker hlásil, že se průběžně zapíná a vypíná, je potřeba kliknout pomocí pravého tlačítka myši na ikonu programu v pravé části lišty hlavního panelu a vybrat možnost `Switch to Windows Containers...` -> Následně potvrdíš pomocí tlačítka `Switch` ve vyskakovacím okně. Aplikace se následně zavře. Po opětovném otevření aplikace by se její stav měl zastavit buď na "running" nebo "stopped". Pokud se tak stane, pomocí stejného postupu přepneme zpátky na Linuxové kontejnery.
+3. Stáhnout git repozitář aplikace do PC
+    1. Otevřít příkazovou řádku
+        1. Linux - terminál
+        2. Windows - Windows PowerShell
+    2. Napište `git clone https://github.com/Plyshak/diploma-thesis.git thesis` a tlačítkem enter potvrďte
+    3. Napište `cd thesis` a tlačítkem enter potvrďte
+    4. Spusťte inicializační příkaz
+        1. Linux - `. ./init.sh`
+        2. Windows - `./init-win.sh`
+    5. Otevřete `http://localhost` v prohlížeči
+
+Úspěšní instalce programů Git a Docker může být zkontrolována v příkazové řádce pomocí příkazů:
+1. Git - Napište `git --version` a tlačítkem enter potvrďte
+2. Docker - Napište `docker --version` a tlačítkem enter potvrďte
+
+Oba příkazy by měly vypsat nainstalovanou verzi programu nebo vypsat chzbovou hlášku, že příkaz nebyl rozpoznán.
+Ukázka úspěšné kontroly instalace pomocí příkazů:
+
+```
+PS C:\Users\User> docker --version
+Docker version 20.10.14, build a224086
+
+PS C:\Users\User> git --version
+git version 2.36.1.windows.1
+```
+
