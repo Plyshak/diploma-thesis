@@ -29,11 +29,11 @@ values
     (4, 'textBlock', 5, now(), now(), true, 0), -- ID: 6
     (5, 'textBlock', 6, now(), now(), true, 0), -- ID: 7
     -- course
-    (6, 'liveCode', 1, now(), now(), true, 0), -- ID: 8
-    (7, 'liveCode', 2, now(), now(), true, 0), -- ID: 9
+    (6, 'liveCode', 1, now(), now(), true, 1), -- ID: 8
+    (7, 'liveCode', 2, now(), now(), true, 1), -- ID: 9
     (8, 'testForm', 1, now(), now(), true, 0), -- ID: 10
-    (9, 'liveCode', 3, now(), now(), true, 0), -- ID: 11
-    (10, 'liveCode', 4, now(), now(), true, 0), -- ID: 12
+    (9, 'liveCode', 3, now(), now(), true, 1), -- ID: 11
+    (10, 'liveCode', 4, now(), now(), true, 1), -- ID: 12
     (11, 'testForm', 2, now(), now(), true, 0), -- ID: 13
     (12, 'testForm', 3, now(), now(), true, 0), -- ID: 14
     (13, 'textBlock', 7, now(), now(), true, 0), -- ID: 15
@@ -67,4 +67,11 @@ values
     (36, 'textBlock', 30, now(), now(), true, 0), -- ID: 41
     (36, 'codeBlock', 5, now(), now(), true, 1), -- ID: 41
     (37, 'textBlock', 31, now(), now(), true, 0), -- ID: 42
-    (37, 'pictureBlock', 1, now(), now(), true, 0); -- ID: 43
+    (37, 'pictureBlock', 1, now(), now(), true, 0), -- ID: 43
+    -- course additional plugins
+    (6, 'codeBlock', 6, now(), now(), true, 0), -- ID: 44
+    (7, 'codeBlock', 7, now(), now(), true, 0), -- ID: 45
+    (9, 'codeBlock', 8, now(), now(), true, 0), -- ID: 46
+    (10, 'codeBlock', 9, now(), now(), true, 0); -- ID: 47
+
+

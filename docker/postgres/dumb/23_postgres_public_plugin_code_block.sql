@@ -54,4 +54,22 @@ At line:14 char:2', 'powershell'), -- ID: 4
     level: 6
     paths:
         - src
-        - tests', 'yml'); -- ID: 5
+        - tests', 'yml'), -- ID: 5
+    (now(), now(), 'Vyzkoušejte si:', true, '<? echo "Hello PHP World!";', 'php'), -- ID: 6
+    (now(), now(), 'Vyzkoušejte si:', true, 'console.log("Hello JS World!");', 'js'), -- ID: 7
+    (now(), now(), 'Vyzkoušejte si:', true, 'print("Hello Python3 World!");', 'python'), -- ID: 8
+    (now(), now(), 'Vyzkoušejte si:', true, 'select * from actors;
+
+nebo
+
+select * from films;
+
+nebo
+
+select * from actors
+  where id in (
+      select actor_id from actor_to_film
+        where film_id = (select id from films where title = ''Avengers'')
+  );
+', 'sql'); -- ID: 9
+
