@@ -75,11 +75,11 @@ header div.headerContainer div.userProfile div.userProfileContext {
 }
 
 header div.headerContainer div.userProfile div.userProfileContext.logged-in {
-    background-image: url("../images/user-profile-login.png");
+    background-image: url(../images/user-profile-login.png);
 }
 
 header div.headerContainer div.userProfile div.userProfileContext.logged-out {
-    background-image: url("../images/user-profile-logout.png");
+    background-image: url(../images/user-profile-logout.png);
 }
 
 header div.headerContainer div.userProfile div.userProfileContext div.userProfileMenu {

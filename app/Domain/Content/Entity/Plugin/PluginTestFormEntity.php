@@ -32,6 +32,6 @@ class PluginTestFormEntity extends AbstractPluginBlockEntity
     {
         $json = str_replace("\n", '', $this->configuration);
 
-        return json_decode(utf8_encode($json), true) ?? [];
+        return json_decode($json, true) ?? [];
     }
 }

@@ -16,15 +16,17 @@
 {/define}
 
 {define body}
-    <div class="plugin-test-form plugin-item">
-        <div class="columns" n:snippet="testForm">
-            <div class="left-column">
-                {control form}
-            </div>
-            <div class="right-column">
-                {if $validate}
-                    {control validatedForm}
-                {/if}
+    <div class="plugin-body plugin-item">
+        <div class="body">
+            <div class="container" n:snippet="testForm">
+                <div class="left-column">
+                    {control form}
+                </div>
+                <div class="right-column">
+                    {if $validate}
+                        {control validatedForm}
+                    {/if}
+                </div>
             </div>
         </div>
     </div>

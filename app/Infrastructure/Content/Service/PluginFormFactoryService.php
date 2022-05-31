@@ -142,7 +142,8 @@ class PluginFormFactoryService
             },
             "1" : {
                 "answer": "Toto je spravna odpoved",
-                "points": "1"
+                "points": "1",
+                "reason": "Protože je napsáno, že je správná."
             }
         }
     },
@@ -156,7 +157,8 @@ class PluginFormFactoryService
             },
             "1": {
                 "answer": "Toto je spravna odpoved",
-                "points": "1"
+                "points": "1",
+                "reason": "Protože je napsáno, že je správná."
             },
             "2": {
                 "answer": "Toto je spatna odpoved",
@@ -164,7 +166,8 @@ class PluginFormFactoryService
             },
             "3": {
                 "answer": "Toto je spravna odpoved",
-                "points": "1"
+                "points": "1",
+                "reason": "Protože je napsáno, že je správná."
             }
         }
     }

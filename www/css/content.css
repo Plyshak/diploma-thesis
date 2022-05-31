@@ -68,6 +68,109 @@ div.plugin-live-code div.plugin-body div.body div.container div.right-column ifr
     display: block;
 }
 
+/* Plugin - Test Form */
+div.plugin-test-form div.plugin-body div.body div.container {
+    display: block;
+    width: 100%;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div.left-column {
+    float: left;
+    width: 45%;
+    display: block;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div.right-column {
+    float: right;
+    width: 45%;
+    display: block;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form div.controls-container {
+    width: 100%;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form div.controls-container div.pair-container {
+    margin: 10px 0 0 15px;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form div.controls-container div.pair-container div.label-container {
+    color: var(--secondary);
+    font-size: 16pt;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form div.controls-container div.pair-container div.control-container {
+    margin: 5px 0 0 10px;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form div.controls-container div.pair-container div.control-container label div {
+    margin: 5px 0;
+}
+        /* hide classic inputs, show special image inputs */
+div.plugin-test-form div.plugin-body div.body div.container div form label input {
+    display: none;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form label input + div span.image-option {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    float: left;
+    margin: 0 5px;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form label input[type=checkbox] + div span.image-option {
+    background-image: url(../images/checkbox-unchecked-secondary.png);
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form label input[type=checkbox]:checked + div span.image-option {
+    background-image: url(../images/checkbox-checked-secondary.png);
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form label input[type=radio] + div span.image-option {
+    background-image: url(../images/radio-unchecked-secondary.png);
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form label input[type=radio]:checked + div span.image-option {
+    background-image: url(../images/radio-checked-secondary.png);
+}
+
+        /* Provide popup reasoning */
+div.plugin-test-form div.plugin-body div.body div.container div form div.reason {
+    margin: 10px 0 0 0;
+    padding: 0 0 0 25px;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form div.reason div.infoPanel {
+    width: 100%;
+    color: var(--light-gray);
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form div.reason div.infoContent {
+    border: 1px solid var(--light-gray);
+    background: var(--light-gray-bg);
+    border-radius: 5px;
+    font-size: 10pt;
+    padding: 5px 0 0 5px;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form div.reason div.infoContent div.question {
+    margin: 5px 0 0 0;
+    padding: 0 0 0 5px;
+    font-style: italic;
+}
+
+div.plugin-test-form div.plugin-body div.body div.container div form div.reason div.infoContent div.answer {
+    padding: 0 0 0 15px;
+}
+
 /* Plugin - Code Block*/
 div.plugin-code-block div.code-language {
     display: block;
