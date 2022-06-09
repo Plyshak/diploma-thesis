@@ -2,7 +2,7 @@
 
 namespace Infrastructure\Course\Component\List;
 
-use Domain\Course\Service\CourseService;
+use Domain\Course\Service\CourseProviderInterface;
 use Domain\Label\Entity\LabelEntity;
 use Domain\Label\Service\LabelService;
 use Domain\Shared\Collection\Collection;
@@ -27,7 +27,7 @@ class ListControl extends AbstractControl
     protected $articleControlFactory;
 
     public function __construct(
-        CourseService $courseService,
+        CourseProviderInterface $courseService,
         UsersRepositoryInterface $userManager,
         TopicService $topicService,
         LabelService $labelService,

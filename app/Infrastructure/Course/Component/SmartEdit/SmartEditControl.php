@@ -4,7 +4,7 @@ namespace Infrastructure\Course\Component\SmartEdit;
 
 use Domain\Course\Entity\ChapterEntity;
 use Domain\Course\Entity\PageEntity;
-use Domain\Course\Service\CourseService;
+use Domain\Course\Service\CourseProviderInterface;
 use Infrastructure\Component\AbstractControl;
 use Infrastructure\Content\Component\ContentBuilder\ContentBuilderControl;
 use Infrastructure\Content\Component\ContentBuilder\ContentBuilderControlFactory;
@@ -27,7 +27,7 @@ class SmartEditControl extends AbstractControl
     public function __construct(
         ?string $type,
         ?int $id,
-        CourseService $courseService,
+        CourseProviderInterface $courseService,
         ContentBuilderControlFactory $contentBuilderControlFactory
     ) {
         $this->type = $type;

@@ -10,7 +10,7 @@ use Domain\Course\Repository\CourseRepositoryInterface;
 use Domain\Course\Repository\PageRepositoryInterface;
 use Domain\Shared\Collection\Collection;
 
-class CourseService
+class CourseService implements CourseProviderInterface
 {
     protected $courseManager;
     protected $chapterManager;

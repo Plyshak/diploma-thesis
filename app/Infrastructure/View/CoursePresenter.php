@@ -5,7 +5,7 @@ namespace Infrastructure\View;
 use Domain\Course\Entity\ChapterEntity;
 use Domain\Course\Entity\CourseEntity;
 use Domain\Course\Entity\PageEntity;
-use Domain\Course\Service\CourseService;
+use Domain\Course\Service\CourseProviderInterface;
 use Domain\Topic\Entity\TopicEntity;
 use Domain\Topic\Service\TopicService;
 use Infrastructure\Content\Component\Content\ContentControl;
@@ -18,7 +18,7 @@ use Nette\Application\UI\Form;
 
 class CoursePresenter extends AbstractPresenter
 {
-    /** @var CourseService @inject */
+    /** @var CourseProviderInterface @inject */
     public $courseService;
 
     /** @var TopicService @inject */
