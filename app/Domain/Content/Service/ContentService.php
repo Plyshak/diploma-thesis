@@ -9,7 +9,7 @@ use Domain\Content\Repository\ContentRepositoryInterface;
 /**
  * operations above content builder create/get
  */
-class ContentService
+class ContentService implements ContentProviderInterface
 {
     protected $contentRepository;
 

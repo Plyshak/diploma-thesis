@@ -2,7 +2,7 @@
 
 namespace Infrastructure\Content\Component\ContentBuilder;
 
-use Domain\Content\Service\ContentService;
+use Domain\Content\Service\ContentProviderInterface;
 use Domain\Content\Entity\ContentInterface;
 use Infrastructure\Component\AbstractControl;
 use Infrastructure\Content\Component\ListPlugin\ListPluginControl;
@@ -10,10 +10,7 @@ use Infrastructure\Content\Component\ListPlugin\ListPluginControlFactory;
 
 class ContentBuilderControl extends AbstractControl
 {
-    /** @var ContentInterface */
     protected $entity;
-
-    /** @var ContentService */
     protected $service;
 
     /** @var ListPluginControlFactory  */
@@ -21,7 +18,7 @@ class ContentBuilderControl extends AbstractControl
 
     public function __construct(
         ContentInterface $entity,
-        ContentService $service,
+        ContentProviderInterface $service,
         ListPluginControlFactory $listPluginControlFactory
     ) {
         $this->entity = $entity;

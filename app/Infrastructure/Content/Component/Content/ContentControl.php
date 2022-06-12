@@ -3,7 +3,7 @@
 namespace Infrastructure\Content\Component\Content;
 
 use Domain\Content\Entity\ContentInterface;
-use Domain\Content\Service\ContentService;
+use Domain\Content\Service\ContentProviderInterface;
 use Infrastructure\Component\AbstractControl;
 use Infrastructure\Content\Service\PluginService;
 use Nette\Application\UI\Multiplier;
@@ -19,7 +19,7 @@ class ContentControl extends AbstractControl
 
     public function __construct(
         ContentInterface $contentEntity,
-        ContentService $contentService,
+        ContentProviderInterface $contentService,
         PluginService $pluginService
     ) {
         $this->contentableEntity = $contentEntity;

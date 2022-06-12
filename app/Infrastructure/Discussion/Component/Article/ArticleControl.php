@@ -4,7 +4,7 @@ namespace Infrastructure\Discussion\Component\Article;
 
 use Domain\Content\Entity\Plugin\DescriptionPluginInterface;
 use Domain\Content\Entity\Plugin\PluginBlockEntityInterface;
-use Domain\Content\Service\ContentService;
+use Domain\Content\Service\ContentProviderInterface;
 use Domain\Discussion\Entity\DiscussionEntity;
 use Domain\Label\Entity\LabelEntity;
 use Domain\Label\Repository\LabelStackRepositoryInterface;
@@ -21,7 +21,7 @@ class ArticleControl extends AbstractControl
     public function __construct(
         DiscussionEntity $discussionEntity,
         LabelStackRepositoryInterface $labelStackManager,
-        ContentService $contentService,
+        ContentProviderInterface $contentService,
         PluginService $pluginService
     ) {
         $this->discussionEntity = $discussionEntity;
