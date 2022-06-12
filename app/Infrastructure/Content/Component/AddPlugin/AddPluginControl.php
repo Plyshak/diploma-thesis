@@ -9,9 +9,9 @@
 namespace Infrastructure\Content\Component\AddPlugin;
 
 use Domain\Content\Entity\ContentEntity;
+use Domain\Content\Plugin\Component\PluginFormFactoryInterface;
 use Infrastructure\Component\AbstractControl;
 use Infrastructure\Content\Plugin\Component\PluginControlFactoryInterface;
-use Infrastructure\Content\Service\PluginFormFactoryService;
 use Infrastructure\Content\Service\PluginService;
 use Nette\Application\UI\Form;
 
@@ -32,7 +32,7 @@ class AddPluginControl extends AbstractControl
     /** @var PluginService */
     protected $service;
 
-    /** @var PluginFormFactoryService */
+    /** @var PluginFormFactoryInterface */
     protected $pluginFormFactoryService;
 
     /** @var array */
@@ -44,13 +44,13 @@ class AddPluginControl extends AbstractControl
     /**
      * @param ContentEntity $entity
      * @param PluginService $service
-     * @param PluginFormFactoryService $pluginFormFactoryService
+     * @param PluginFormFactoryInterface $pluginFormFactoryService
      * @param PluginControlFactoryInterface[] $factories
      */
     public function __construct(
         ContentEntity $entity,
         PluginService $service,
-        PluginFormFactoryService $pluginFormFactoryService,
+        PluginFormFactoryInterface $pluginFormFactoryService,
         array $factories
     ) {
         $this->entity = $entity;

@@ -4,7 +4,7 @@ namespace Infrastructure\Course\Component\List;
 
 use Domain\Course\Service\CourseProviderInterface;
 use Domain\Label\Entity\LabelEntity;
-use Domain\Label\Service\LabelService;
+use Domain\Label\Service\LabelProviderInterface;
 use Domain\Shared\Collection\Collection;
 use Domain\Topic\Entity\TopicEntity;
 use Domain\Topic\Service\TopicService;
@@ -30,7 +30,7 @@ class ListControl extends AbstractControl
         CourseProviderInterface $courseService,
         UsersRepositoryInterface $userManager,
         TopicService $topicService,
-        LabelService $labelService,
+        LabelProviderInterface $labelService,
         ArticleControlFactory $articleControlFactory
     ) {
         $this->courseService = $courseService;

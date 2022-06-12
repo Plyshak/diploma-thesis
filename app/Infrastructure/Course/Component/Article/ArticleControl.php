@@ -3,7 +3,7 @@
 namespace Infrastructure\Course\Component\Article;
 
 use Domain\Course\Entity\CourseEntity;
-use Domain\Label\Service\LabelService;
+use Domain\Label\Service\LabelProviderInterface;
 use Infrastructure\Component\AbstractControl;
 
 class ArticleControl extends AbstractControl
@@ -13,7 +13,7 @@ class ArticleControl extends AbstractControl
 
     public function __construct(
         CourseEntity $courseEntity,
-        LabelService $labelService
+        LabelProviderInterface $labelService
     ) {
         $this->courseEntity = $courseEntity;
         $this->labelService = $labelService;

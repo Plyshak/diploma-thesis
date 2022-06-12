@@ -12,7 +12,7 @@ use Domain\Shared\Collection\Collection;
 /**
  * operations above labels
  */
-class LabelService
+class LabelService implements LabelProviderInterface
 {
     protected $labelManager;
     protected $labelBridgeManager;

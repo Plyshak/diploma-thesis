@@ -5,9 +5,9 @@ namespace Infrastructure\Content\Component\ListPlugin;
 use Domain\Content\Entity\ContentEntity;
 use Domain\Content\Entity\Plugin\PluginBlockEntityInterface;
 use Domain\Content\Entity\PluginEntity;
+use Domain\Content\Plugin\Component\PluginFormFactoryInterface;
 use Infrastructure\Component\AbstractControl;
 use Infrastructure\Content\Component\AddPlugin\AddPluginControlFactory;
-use Infrastructure\Content\Service\PluginFormFactoryService;
 use Infrastructure\Content\Service\PluginService;
 use Nette\Application\UI\Form;
 use Nette\Application\UI\Multiplier;
@@ -26,7 +26,7 @@ class ListPluginControl extends AbstractControl
     /** @var AddPluginControlFactory */
     protected $addPluginControlFactory;
 
-    /** @var PluginFormFactoryService */
+    /** @var PluginFormFactoryInterface */
     protected $pluginFormFactoryService;
 
     /** @var bool */
@@ -36,7 +36,7 @@ class ListPluginControl extends AbstractControl
         ContentEntity $entity,
         PluginService $service,
         AddPluginControlFactory $addPluginControlFactory,
-        PluginFormFactoryService $pluginFormFactoryService
+        PluginFormFactoryInterface $pluginFormFactoryService
     ) {
         $this->entity = $entity;
         $this->pluginService = $service;

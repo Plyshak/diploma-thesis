@@ -8,15 +8,16 @@ use Domain\Content\Entity\Plugin\PluginLiveCodeEntity;
 use Domain\Content\Entity\Plugin\PluginPictureBlockEntity;
 use Domain\Content\Entity\Plugin\PluginTestFormEntity;
 use Domain\Content\Entity\Plugin\PluginTextBlockEntity;
+use Domain\Content\Plugin\Component\PluginFormFactoryInterface;
 use Nette\Application\UI\Form;
 use Nette\Utils\Html;
 use Nette\Utils\Strings;
 
-class PluginFormFactoryService
+class PluginFormFactoryService implements PluginFormFactoryInterface
 {
     public const FUNC_PLUGIN_FORM_NAME = 'get%sForm';
 
-    public function getPluginForm(PluginBlockEntityInterface $entity): Form
+    public function getPluginForm(PluginBlockEntityInterface $entity)
     {
         $func = \sprintf(
             self::FUNC_PLUGIN_FORM_NAME,
@@ -26,7 +27,7 @@ class PluginFormFactoryService
         return \call_user_func([$this, $func], $entity);
     }
 
-    public function createPluginForm(string $prefix): Form
+    public function createPluginForm(string $prefix)
     {
         $func = \sprintf(
             self::FUNC_PLUGIN_FORM_NAME,
@@ -36,7 +37,7 @@ class PluginFormFactoryService
         return \call_user_func([$this, $func]);
     }
 
-    public function getTextBlockForm(?PluginTextBlockEntity $entity = null): Form
+    public function getTextBlockForm(?PluginTextBlockEntity $entity = null)
     {
         $form = $this->getBasicBlockForm();
 
@@ -76,7 +77,7 @@ class PluginFormFactoryService
         return $form;
     }
 
-    public function getPictureBlockForm(?PluginPictureBlockEntity $entity = null): Form
+    public function getPictureBlockForm(?PluginPictureBlockEntity $entity = null)
     {
         $form = $this->getBasicBlockForm();
 
@@ -126,7 +127,7 @@ class PluginFormFactoryService
         return $form;
     }
 
-    public function getTestFormForm(?PluginTestFormEntity $entity = null) : Form
+    public function getTestFormForm(?PluginTestFormEntity $entity = null)
     {
         $form = $this->getBasicBlockForm();
 
@@ -215,7 +216,7 @@ class PluginFormFactoryService
         return $form;
     }
 
-    public function getCodeBlockForm(?PluginCodeBlockEntity $entity = null) : Form
+    public function getCodeBlockForm(?PluginCodeBlockEntity $entity = null)
     {
         $form = $this->getBasicBlockForm();
 
@@ -239,7 +240,7 @@ class PluginFormFactoryService
         return $form;
     }
 
-    public function getLiveCodeForm(?PluginLiveCodeEntity $entity = null) : Form
+    public function getLiveCodeForm(?PluginLiveCodeEntity $entity = null)
     {
         $form = $this->getBasicBlockForm();
 

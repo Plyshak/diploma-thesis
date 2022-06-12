@@ -8,7 +8,7 @@ use Domain\Discussion\Entity\CommentEntity;
 use Domain\Discussion\Entity\DiscussionEntity;
 use Domain\Discussion\Service\DiscussionProviderInterface;
 use Domain\Label\Entity\LabelEntity;
-use Domain\Label\Service\LabelService;
+use Domain\Label\Service\LabelProviderInterface;
 use Domain\Shared\Collection\Collection;
 use Infrastructure\Content\Component\Content\ContentControl;
 use Infrastructure\Content\Component\Content\ContentControlFactory;
@@ -26,7 +26,7 @@ class DiscussionPresenter extends AbstractPresenter
     /** @var CourseRepositoryInterface @inject */
     public $courseManager;
 
-    /** @var LabelService @inject */
+    /** @var LabelProviderInterface @inject */
     public $labelService;
 
     /** @var DiscussionProviderInterface @inject */

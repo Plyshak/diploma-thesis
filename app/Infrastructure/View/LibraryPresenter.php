@@ -3,7 +3,7 @@
 namespace Infrastructure\View;
 
 use Domain\Label\Entity\LabelEntity;
-use Domain\Label\Service\LabelService;
+use Domain\Label\Service\LabelProviderInterface;
 use Domain\Library\Entity\LibraryEntity;
 use Domain\Shared\Collection\Collection;
 use Infrastructure\Content\Component\Content\ContentControl;
@@ -21,7 +21,7 @@ class LibraryPresenter extends AbstractPresenter
     /** @var LibraryManager @inject */
     public $libraryManager;
 
-    /** @var LabelService @inject */
+    /** @var LabelProviderInterface @inject */
     public $labelService;
 
     /** @var ListControlFactory @inject */
