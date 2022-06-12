@@ -1,5 +1,7 @@
 .labelForm table tr th {
-    display: none;
+    color: var(--secondary);
+    width: 100px;
+    text-align: left;
 }
 
 .labelForm label input {

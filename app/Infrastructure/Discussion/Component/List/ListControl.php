@@ -4,7 +4,7 @@ namespace Infrastructure\Discussion\Component\List;
 
 use Domain\Course\Entity\CourseEntity;
 use Domain\Course\Repository\CourseRepositoryInterface;
-use Domain\Discussion\Service\DiscussionService;
+use Domain\Discussion\Service\DiscussionProviderInterface;
 use Domain\Label\Entity\LabelEntity;
 use Domain\Label\Repository\LabelRepositoryInterface;
 use Domain\Shared\Collection\Collection;
@@ -25,7 +25,7 @@ class ListControl extends AbstractControl
     public function __construct(
         LabelRepositoryInterface $labelRepository,
         CourseRepositoryInterface $courseRepository,
-        DiscussionService $discussionService,
+        DiscussionProviderInterface $discussionService,
         ArticleControlFactory $articleControlFactory
     ) {
         $this->labelManager = $labelRepository;

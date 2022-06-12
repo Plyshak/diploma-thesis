@@ -8,7 +8,7 @@ use Domain\Discussion\Repository\CommentRepositoryInterface;
 use Domain\Discussion\Repository\DiscussionRepositoryInterface;
 use Domain\Shared\Collection\Collection;
 
-class DiscussionService
+class DiscussionService implements DiscussionProviderInterface
 {
     protected $discussionManager;
     protected $commentManager;

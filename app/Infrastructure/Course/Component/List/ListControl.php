@@ -97,7 +97,7 @@ class ListControl extends AbstractControl
         $separator = $control->getSeparatorPrototype();
         $separator->setName('', true);
 
-        $form->addText('title', 'Titul:')
+        $form->addText('title', 'Název:')
             ->setHtmlAttribute('class', 'smart-search-input')
             ->setHtmlAttribute('placeholder', 'Vyhledávání ...')
             ->setHtmlAttribute('onChange', '$("#labelFormAutoSubmit").click()');
