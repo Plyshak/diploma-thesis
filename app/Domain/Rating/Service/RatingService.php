@@ -7,7 +7,7 @@ use Domain\Rating\Entity\RatingInterface;
 use Domain\Rating\Repository\RatingRepositoryInterface;
 use Domain\User\Entity\UserInterface;
 
-class RatingService
+class RatingService implements RatingProviderInterface
 {
     public const POSITIVE = 'positive';
     public const NEGATIVE = 'negative';

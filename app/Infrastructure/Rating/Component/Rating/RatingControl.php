@@ -3,7 +3,7 @@
 namespace Infrastructure\Rating\Component\Rating;
 
 use Domain\Rating\Entity\RatingInterface;
-use Domain\Rating\Service\RatingService;
+use Domain\Rating\Service\RatingProviderInterface;
 use Domain\User\Entity\UserInterface;
 use Infrastructure\Component\AbstractControl;
 
@@ -14,7 +14,7 @@ class RatingControl extends AbstractControl
 
     public function __construct(
         RatingInterface $ratingEntity,
-        RatingService $ratingService
+        RatingProviderInterface $ratingService
     ) {
         $this->ratingEntity = $ratingEntity;
         $this->ratingService = $ratingService;
