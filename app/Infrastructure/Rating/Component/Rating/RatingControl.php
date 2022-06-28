@@ -49,7 +49,7 @@ class RatingControl extends AbstractControl
         if ($user->isLoggedIn()) {
             $rating = $this->ratingService->getUserVoteForEntity($this->ratingEntity, $user->getIdentity());
         } else {
-            $rating = RatingService::NONE;
+            $rating = RatingProviderInterface::NONE;
         }
 
         return $rating;

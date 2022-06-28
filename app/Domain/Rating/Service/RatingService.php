@@ -9,10 +9,6 @@ use Domain\User\Entity\UserInterface;
 
 class RatingService implements RatingProviderInterface
 {
-    public const POSITIVE = 'positive';
-    public const NEGATIVE = 'negative';
-    public const NONE = 'none';
-
     protected $ratingManager;
 
     public function __construct(
